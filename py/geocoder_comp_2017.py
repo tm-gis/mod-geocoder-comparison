@@ -30,22 +30,23 @@ bbox = "&boundary.rect.min_lon=-123.785578" \
 
 pdxlatlng = [45.5231, -122.6765]
 
+
 def getAddrAndLatLng(g):
     """
     This function works for all geocoders except trimet and mapzen
     """
     if ('ERROR' in g.status or g.status == 'ZERO_RESULTS'):
-        addr = ''
-        lat = 0
-        lng = 0
+        address = ''
+        latitude = 0
+        longitude = 0
     else:
-        addr = unidecode(g.address.replace("'","\''"))      
-        lat = g.lat
-        lng = g.lng
-    return addr, lat, lng
+        address = unidecode(g.address.replace("'", "\''"))
+        latitude = g.lat
+        longitude = g.lng
+    return address, latitude, longitude
     
 
-def copyResultsToTable(anAddr, aLat,aLng):
+def copyResultsToTable(anAddr, aLat, aLng):
     """
     this function copies address string results and the distance in feet
     from "true location" to the table it converts lat lng numeric values
@@ -53,15 +54,16 @@ def copyResultsToTable(anAddr, aLat,aLng):
     """
     if aLng != 'Null':
         updateSQL = "UPDATE geocoder_test SET " + aGeocoder + "_address='" \
-                    + addr  + "', " + aGeocoder + "_dist_ft=" \
+                    + anAddr + "', " + aGeocoder + "_dist_ft=" \
                     "ST_Distance(geom, ST_Transform(ST_SetSRID(ST_MakePoint(" \
                     + str(aLng) + "," + str(aLat) + "), 4326),2913))" \
                     " WHERE id=" + str(row[4]) + ";"
     else:
         updateSQL = "UPDATE geocoder_test SET " + aGeocoder + "_address='" \
-                    + addr  + "', " + aGeocoder \
+                    + anAddr + "', " + aGeocoder \
                     + "_dist_ft='NaN' WHERE id=" + str(row[4]) + ";"
     cur.execute(updateSQL)
+
 
 def parse_mapzen_response(txt):
     """
@@ -89,6 +91,7 @@ def parse_mapzen_response(txt):
         gdict['latitude'] = 0
     return gdict
 
+
 def rlis_geocode(addr_str, token):
     """Take an input address string, send it to the rlis api and return
     a dictionary that are the state plane coordinated for that address,
@@ -115,11 +118,37 @@ def rlis_geocode(addr_str, token):
     else:
         return json_rsp['data'][0]
 
+
+def strip_addresses_of_zip_country(address_string):
+    # remove spaces between commas
+    address_string = address_string.replace(", ", ",")
+    address_list_comma = address_string.split(",")
+
+    # remove country
+    country_candidate = address_list_comma[len(address_list_comma) - 1]
+    country_strings = ["United States", "US", "USA", "united states", "us", "usa"]
+    if country_candidate in country_strings:
+        address_list_comma.remove(country_candidate)
+
+    # remove zip
+    zip_candidate = address_list_comma[len(address_list_comma) - 1].upper()
+    if zip_candidate.find("OR") > -1 or zip_candidate.find("WA") > -1:
+        zip_candidate = zip_candidate.replace("OR", "").replace("WA", "").replace(" ", "")
+    if zip_candidate.find("-") > -1:
+        zip_code_five, zip_code_four = zip_candidate.split("-")
+        if len(zip_code_five) == 5 and len(zip_code_four) == 4 and zip_code_five.isdigit() and zip_code_four.isdigit():
+            address_list_comma[len(address_list_comma) - 1] = \
+                address_list_comma[len(address_list_comma) - 1].replace(zip_candidate, "").replace(" ", "")
+    if len(zip_candidate) == 5 and zip_candidate.isdigit():
+        address_list_comma[len(address_list_comma) - 1] = \
+            address_list_comma[len(address_list_comma) - 1].replace(zip_candidate, "").replace(" ", "")
+    return ", ".join(a for a in address_list_comma)
+
 # some geocoders need api keys
-with open(geocoder_file,'r') as inf:
+with open(geocoder_file, 'r') as inf:
     geocoder_dict = eval(inf.read())
 
-db_creds =  open(db_cred_file,'r').read().strip()
+db_creds = open(db_cred_file, 'r').read().strip()
 
 conn = psycopg2.connect(db_creds)
 cur = conn.cursor()
@@ -155,17 +184,14 @@ for row in cur.fetchall():
     if counter == 6:
         break
     
-    anAdd = row[0].replace(', United States', '') # country was confusing rlis
+    anAdd = strip_addresses_of_zip_country(row[0])
     print '\n\n', anAdd, '\n'
     for aGeocoder in geocoder_dict.keys():
         if aGeocoder == 'trimet':
             gc = tm_geocoder.query(anAdd, rows=1, start=0)
-            results = gc.results[0]
-            try:            
-                addr = (unidecode('{0}, {1}, OR'
-                                  .format(results['name']
-                                  .replace("'","\''"),
-                                  results['city'])))
+            try:
+                results = gc.results[0]
+                addr = (str.decode('{0}, {1}, OR'.format(results['name'].replace("'", "\''"), results['city'])))
             except:
                 addr = 'Null'
                 lat = 'Null'
@@ -178,7 +204,7 @@ for row in cur.fetchall():
         elif aGeocoder == 'mapzen':
             request = "https://search.mapzen.com/v1/search?api_key=" \
                     + geocoder_dict[aGeocoder] + "&text=" + anAdd + bbox
-            resp = requests.get(request).text
+            resp = requests.get(request, verify=False).text
             result = parse_mapzen_response(resp)
             addr = result['label']
             lat = result['latitude']
@@ -210,9 +236,9 @@ for row in cur.fetchall():
                 # point) but it didn't improve things for a small sample 
                 g = this_geocoder(anAdd, key=geocoder_dict[aGeocoder]) 
             
-            print aGeocoder, ':', addr, ", conf.:", g.confidence, ", qual.:", g.quality
+            print aGeocoder, ':', g.address, ", conf.:", g.confidence, ", qual.:", g.quality
 
-            addr, lat, lng = getAddrAndLatLng(g)            
+            addr, lat, lng = getAddrAndLatLng(g)
         copyResultsToTable(addr, lat, lng)
     conn.commit()    
 conn.close()
