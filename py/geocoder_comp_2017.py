@@ -161,8 +161,8 @@ cur = conn.cursor()
 cur.execute('DROP TABLE IF EXISTS geocoder_test')
 
 cur.execute('''CREATE TABLE geocoder_test AS SELECT *
-            FROM trimet_adds WHERE lat != 0
-            LIMIT 10;''') # using LIMIT for testing
+            FROM trimet_adds WHERE lat != 0;''')
+            # LIMIT 10;''') # using LIMIT for testing
 
 cur.execute('''ALTER TABLE geocoder_test
             ADD COLUMN id SERIAL NOT NULL PRIMARY KEY;''')
@@ -174,18 +174,18 @@ for aGeocoder in geocoder_dict.keys():
     cur.execute(sqlString)
 
 counter = 0
-#cur.execute("SELECT * FROM geocoder_test")
-cur.execute("SELECT * FROM geocoder_test WHERE google_dist_ft IS NULL;")
+cur.execute("SELECT * FROM geocoder_test")
+#cur.execute("SELECT * FROM geocoder_test WHERE google_dist_ft IS NULL;")
 for row in cur.fetchall():
     g = ''
     counter += 1
     if counter % 50 == 0:
         print counter, 'rows done'
-    if counter == 6:
-        break
+    # if counter == 6:
+    #     break
     
     anAdd = strip_addresses_of_zip_country(row[0])
-    print '\n\n', anAdd, '\n'
+    # print '\n\n', anAdd, '\n'
     for aGeocoder in geocoder_dict.keys():
         if aGeocoder == 'trimet':
             gc = tm_geocoder.query(anAdd, rows=1, start=0)
@@ -196,7 +196,7 @@ for row in cur.fetchall():
                 addr = 'Null'
                 lat = 'Null'
                 lng = 'Null'
-            print aGeocoder, ':', addr, ", maxScore:", gc.maxScore
+            # print aGeocoder, ':', addr, ", maxScore:", gc.maxScore
         # I have to call mapzen outside of the geocoder wrapper because
         # without the bbox parameters (which I can't pass through geocoder)
         # it was returning some very wacky results - Kansas, Iowa, FL -
@@ -209,14 +209,14 @@ for row in cur.fetchall():
             addr = result['label']
             lat = result['latitude']
             lng = result['longitude']
-            print aGeocoder, ':', addr, ", confidence:", result['confidence']
+            # print aGeocoder, ':', addr, ", confidence:", result['confidence']
         elif aGeocoder == 'rlis':
             result = rlis_geocode(anAdd, geocoder_dict[aGeocoder])
             if result:
                 addr = result['fullAddress']
                 lat = result['lat']
                 lng = result['lng']
-                print aGeocoder, addr, 'score:', result['score']
+                # print aGeocoder, addr, 'score:', result['score']
             else:
                 addr = 'Null'
                 lat = 'Null'
@@ -236,7 +236,7 @@ for row in cur.fetchall():
                 # point) but it didn't improve things for a small sample 
                 g = this_geocoder(anAdd, key=geocoder_dict[aGeocoder]) 
             
-            print aGeocoder, ':', g.address, ", conf.:", g.confidence, ", qual.:", g.quality
+            # print aGeocoder, ':', g.address, ", conf.:", g.confidence, ", qual.:", g.quality
 
             addr, lat, lng = getAddrAndLatLng(g)
         copyResultsToTable(addr, lat, lng)
