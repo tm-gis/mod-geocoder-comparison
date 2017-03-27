@@ -65,3 +65,4 @@ plt.legend(loc=4, frameon=False)
 # plt.show()
 
 plt.savefig('foursquare_geocoder_comp.jpg')
+# df.to_csv('foursquaregeocoder_test_results.csv')
