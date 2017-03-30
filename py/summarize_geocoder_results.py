@@ -4,10 +4,12 @@ Run this script after running 'geocoder_comp_2017.py' (in same dir)
 '''
 
 import psycopg2
+import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 from pandas import DataFrame
-import image
+sns.set(style="whitegrid")
+
 
 # Accessing the database with geocoder testing results
 db_cred_file = 'P:/geocoder_db_creds.txt'
@@ -43,6 +45,8 @@ for dist in distThresholdList:
         results_df.set_value(geocoder, dist_field, pct_in_threshold)
 
 
+
+
 dist_array = np.array(distThresholdList)
 
 # From Carto Colors: https://carto.com/carto-colors
@@ -53,7 +57,14 @@ fig = plt.figure(figsize=(11, 8))
 ax = plt.gca()
 ax.set_xlabel("Distance from verified location (ft)")
 ax.set_ylabel("Percent of geocoder results within distance threshold")
-plt.ylim((0,100))
+
+# Remove spines and ticks from top and right edges
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.yaxis.set_ticks_position('left')
+ax.xaxis.set_ticks_position('bottom')
+
+plt.ylim((0, 100))
 i = 0
 for geocoder in geocoders:
     line_color = colors[i]
@@ -64,5 +75,5 @@ for geocoder in geocoders:
 plt.legend(loc=4, frameon=False)
 # plt.show()
 
-plt.savefig('foursquare_geocoder_comp.jpg')
+plt.savefig('foursquare_geocoder_comp.png', transparent=False)
 # df.to_csv('foursquaregeocoder_test_results.csv')
