@@ -1,54 +1,79 @@
 # -*- coding: utf-8 -*-
-"""
-Script to compare performance of various geocoders.
-Madeline Steele, TriMet, June 2016
-"""
+'''
+Run this script after running 'geocoder_comp_2017.py' (in same dir)
+'''
 
 import psycopg2
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
 from pandas import DataFrame
+sns.set(style="whitegrid")
 
-conn = psycopg2.connect("dbname=test user=postgres")
+
+# Accessing the database with geocoder testing results
+db_cred_file = 'P:/geocoder_db_creds.txt'
+db_creds = open(db_cred_file, 'r').read().strip()
+conn = psycopg2.connect(db_creds)
 cur = conn.cursor()
 
-
-distThresholdList = [25,50,100,200,250,500,1000]
-distFieldList = ['Pct_closer_than_' + str(x) + 'ft' for x in distThresholdList]
-
-def summarizeResults(outTableName, selectionQuery):
-    createTableQuery = "CREATE TABLE " + outTableName + "(Geocoder text, " + ' numeric, '.join(distFieldList) + " numeric);"
-    cur.execute("DROP TABLE IF EXISTS " + outTableName + ";")
-    cur.execute(createTableQuery)
-    
-    cur.execute(selectionQuery)
-    
-    ## convert table to a pandas dataframe    
-    the_data = cur.fetchall()
-    colnames = [desc[0] for desc in cur.description]
-    df = DataFrame(the_data)
-    df.columns = colnames
-    
-    rowCount = float(len(df))
-    
-    for column_name in df.columns:
-        if "dist_ft" not in column_name:
-            continue
-        valuesStr = "'" + column_name.split('_')[0] + "'"
-        for threshold in distThresholdList:
-            pctInThreshold = ((df[column_name] < threshold).sum())/rowCount *100.0
-            valuesStr = valuesStr + ', ' + str(pctInThreshold)
-        insertQuery = "INSERT INTO " + outTableName + " VALUES(" + valuesStr + ");"  
-        print insertQuery
-        cur.execute(insertQuery)
-    
-# Running this twice - once for the all OR addresses in TriMet's 7-county AOI, and once just for metro  
+# Running this twice - once for the all OR addresses in TriMet's 7-county AOI, and once just for metro
 sevenCountySelQuery = "SELECT * FROM geocoder_test;"
-metroSelQuery = "SELECT * FROM geocoder_test as g JOIN metro_bnd AS m ON ST_contains(m.geom, g.geom);"
+# metroSelQuery = "SELECT * FROM geocoder_test as g JOIN metro_bnd AS m ON ST_contains(m.geom, g.geom);"
+cur.execute(sevenCountySelQuery)
+the_data = cur.fetchall()
+col_names = [desc[0] for desc in cur.description]
+df = DataFrame(the_data)
+df.columns = col_names
+df.convert_objects(convert_numeric=True)
 
-summarizeResults('geocoder_summary_seven_counties',sevenCountySelQuery)
-summarizeResults('geocoder_summary_metro',metroSelQuery)
-
-conn.commit()
-    
 cur.close()
 conn.close()
 
+distThresholdList = range(0, 501, 5)
+# distThresholdList = [25, 50, 100, 200, 250, 500, 1000]
+distFieldList = ['Pct_closer_than_' + str(x) + 'ft' for x in distThresholdList]
+geocoders = [col.split('_')[0] for col in df.columns if 'dist_ft' in col]
+results_df = DataFrame(index=geocoders, columns=distFieldList)
+
+for dist in distThresholdList:
+    for geocoder in geocoders:
+        geo_dist_field = geocoder + '_dist_ft'
+        dist_field = 'Pct_closer_than_' + str(dist) + 'ft'
+        no_nulls = df[geo_dist_field].astype('float').dropna()
+        pct_in_threshold = len(no_nulls[no_nulls < dist]) / float(len(df)) * 100.0
+        results_df.set_value(geocoder, dist_field, pct_in_threshold)
+
+
+
+
+dist_array = np.array(distThresholdList)
+
+# From Carto Colors: https://carto.com/carto-colors
+colors = ['#7F3C8D', '#11A579', '#3969AC', '#F2B701', '#E73F74', '#80BA5A', '#E68310',
+          '#008695', '#CF1C90', '#f97b72', '#4b4b8f', '#A5AA99']
+
+fig = plt.figure(figsize=(11, 8))
+ax = plt.gca()
+ax.set_xlabel("Distance from verified location (ft)")
+ax.set_ylabel("Percent of geocoder results within distance threshold")
+
+# Remove spines and ticks from top and right edges
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.yaxis.set_ticks_position('left')
+ax.xaxis.set_ticks_position('bottom')
+
+plt.ylim((0, 100))
+i = 0
+for geocoder in geocoders:
+    line_color = colors[i]
+    ax.plot(dist_array, results_df.loc[geocoder], label=geocoder, color=line_color,
+            linewidth=3) #, marker='x')
+    i += 1
+
+plt.legend(loc=4, frameon=False)
+# plt.show()
+
+plt.savefig('foursquare_geocoder_comp.png', transparent=False)
+# df.to_csv('foursquaregeocoder_test_results.csv')
