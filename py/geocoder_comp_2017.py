@@ -251,4 +251,4 @@ def geocode_addresses():
     conn.close()
     return
 
-geocode_addresses()
+# geocode_addresses()
