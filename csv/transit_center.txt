@@ -1,0 +1,17 @@
+FID,name,address,city,county,zipcode,status,Lat,Long
+0,Clackamas Town Center Transit Center,9225 SE Sunnyside Rd,Clackamas,Clackamas,97015,Existing,45.435689972100000,-122.568327538999990
+1,Beaverton Transit Center,4050 SW Lombard Ave,Beaverton,Washington,97006,Existing,45.491083950099998,-122.801138777000010
+2,Washington Square Transit Center,9585 SW Washington Square Rd,Tigard,Washington,97223,Existing,45.452458310700003,-122.778794373000000
+3,Tigard Transit Center,8960 SW Commercial St,Tigard,Washington,97223,Existing,45.430265381900000,-122.769365647000000
+4,Lake Oswego Transit Center,4th St and A Ave,Lake Oswego,Multnomah,97035,Existing,45.420379311500000,-122.667932476999990
+5,Barbur Blvd Transit Center,9750 SW Barbur Blvd,Portland,Multnomah,97219,Existing,45.454418728100002,-122.717676625000000
+6,Gateway/NE 99th Ave Transit Center,9900 NE Multnomah,Portland,Multnomah,97220,Existing,45.530388600700000,-122.563461297000000
+7,Gresham Central Transit Center,350 NE 8th,Gresham,Clackamas,97030,Existing,45.502834290400003,-122.426841763000000
+8,Hollywood/NE 42nd Ave Transit Center,1410 NE 42nd Ave,Portland,Multnomah,97232,Existing,45.533280342600001,-122.620639603000000
+9,Sunset Transit Center,10470 SW Barnes Rd,Portland,Washington,97229,Existing,45.510193108099998,-122.781187785000000
+10,Hillsboro Central/SE 3rd Ave Transit Center,333 SE Washington,Hillsboro,Washington,97123,Existing,45.521455144100003,-122.985263368999990
+11,Willow Creek/SW 185th Ave Transit Center,395 SW 185th Ave,Beaverton,Washington,97006,Existing,45.517412844200003,-122.870158448000000
+12,Rose Quarter Transit Center,47 NE Holladay St,Portland,Multnomah,97232,Existing,45.530208885400000,-122.666118432999990
+13,Oregon City Transit Center,1035 SW Main St,Oregon City,Clackamas,97045,Existing,45.360138521400003,-122.604317929999990
+14,Parkrose/Sumner Transit Center,9481 NE Sandy Blvd,Portland,Multnomah,97220,Existing,45.559010430000001,-122.564401596000000
+15,N Lombard Transit Center,N Interstate Ave & Lombard St,Portland,Multnomah,97217,Existing,45.577116660199998,-122.682090403000000

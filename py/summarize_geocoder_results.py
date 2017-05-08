@@ -75,5 +75,5 @@ for geocoder in geocoders:
 plt.legend(loc=4, frameon=False)
 # plt.show()
 
-plt.savefig('foursquare_geocoder_comp.png', transparent=False)
-# df.to_csv('foursquaregeocoder_test_results.csv')
+plt.savefig('foursquare_geocoder_comp_5-1-17.png', transparent=False)
+df.to_csv('foursquaregeocoder_test_results_5-1-17.csv')

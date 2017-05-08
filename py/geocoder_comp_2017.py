@@ -168,8 +168,8 @@ def geocode_addresses():
     cur.execute('DROP TABLE IF EXISTS geocoder_test')
 
     cur.execute('''CREATE TABLE geocoder_test AS SELECT *
-                FROM trimet_adds WHERE lat != 0
-                LIMIT 10;''') # using LIMIT for testing
+                FROM trimet_adds WHERE lat != 0''')
+                #LIMIT 10; # using LIMIT for testing
 
     cur.execute('''ALTER TABLE geocoder_test
                 ADD COLUMN id SERIAL NOT NULL PRIMARY KEY;''')
@@ -188,8 +188,8 @@ def geocode_addresses():
         counter += 1
         if counter % 50 == 0:
             print counter, 'rows done'
-        if counter == 6:
-            break
+        # if counter == 6:
+        #     break
 
         anAdd = strip_addresses_of_zip_country(row[0])
         print '\n\n', anAdd, '\n'
@@ -251,4 +251,4 @@ def geocode_addresses():
     conn.close()
     return
 
-# geocode_addresses()
+geocode_addresses()

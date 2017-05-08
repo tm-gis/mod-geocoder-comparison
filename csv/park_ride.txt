@@ -1,0 +1,64 @@
+FID,name,address,city,county,zipcode,owner,spaces,status,Lat,Long
+0,Cedar Mill Bible Church Park & Ride,12208 NW Cornell Rd,Portland,Washington,97229,Shared,16,Existing,45.525682527299999,-122.802533134000000
+1,SE Fuller Rd Park & Ride,9608 SE Fuller Rd,Portland,Multnomah,97086,TriMet,630,Existing,45.453254005200002,-122.574497982000000
+2,SE Powell Blvd Park & Ride,3618 SE 92nd Ave,Portland,Multnomah,97266,TriMet,400,Existing,45.494759980600001,-122.566437968000000
+3,The Columba Center,8147 SE Pine St,Portland,Multnomah,97215,Shared,12,Existing,45.520953232300002,-122.579343445000010
+4,Milwaukie Park & Ride,9600 SE Main St,Milwaukie,Clackamas,97222,TriMet,329,Existing,45.452052043099997,-122.640143741000000
+5,Wilsonville Park & Ride,9699 SW Barber St,Wilsonville,Washington,97070,TriMet,408,Existing,45.310984834000003,-122.776336821000000
+6,Tualatin South Park & Ride,18955 SW Boones Ferry Rd,Tualatin,Washington,97062,TriMet,147,Existing,45.383271140100000,-122.764564393000000
+7,Tigard TC Park & Ride,8960 SW Commercial St,Tigard,Washington,97223,TriMet,100,Existing,45.429639199199997,-122.769355996000000
+8,Hall/Nimbus Park & Ride,8505 SW Cascade Ave,Beaverton,Washington,97008,TriMet,50,Existing,45.457141531799998,-122.786906677999990
+9,Bethel Congregational Church Park & Ride,5150 SW Watson Ave,Beaverton,Washington,97005,Shared,50,Existing,45.482987940199997,-122.806264154999990
+10,Beaverton Creek Park & Ride,SW 153rd Ave and Millikan Way,Beaverton,Washington,97006,TriMet,417,Existing,45.498689382999999,-122.831185534000000
+11,SE Holgate Blvd Park & Ride,9639 SE Holgate Blvd,Portland,Multnomah,97266,TriMet,120,Existing,45.490985494500002,-122.566681002000000
+12,Clackamas Town Center Parking Garage,9225 SE Sunnyside Rd,Clackamas,Clackamas,97086,TriMet,750,Existing,45.436103582199998,-122.568510926000000
+13,SE Main St Park & Ride,1119 SE 96th Ave,Portland,Multnomah,97216,TriMet,420,Existing,45.514083355200000,-122.564816576000000
+14,Hillsboro Intermodal Transit Facility,775 SE Baseline St,Hillsboro,Washington,97123,Shared,85,Existing,45.520344441900001,-122.977999247000000
+15,Sunset TC Parking Garage,10470 SW Barnes Rd,Beaverton,Washington,97225,TriMet,627,Existing,45.510599305299998,-122.782247455999990
+16,Fair Complex/Hillsboro Airport Park & Ride,601 NE 34th Ave,Hillsboro,Washington,97124,TriMet,396,Existing,45.527633344900003,-122.946483122000000
+17,Orenco/NW 231st Ave Park & Ride,967 NE Orenco Station Loop,Hillsboro,Washington,97124,TriMet,125,Existing,45.530690235199998,-122.917722443000000
+18,Elmonica/SW 170th Ave Park & Ride,1200 SW 170th Ave,Beaverton,Washington,97006,TriMet,435,Existing,45.510657442400003,-122.851012119000000
+19,Millikan Way Park & Ride,SW Millikan Way and 141st/Shannon Pl,Beaverton,Washington,97005,TriMet,400,Existing,45.495782578600000,-122.821615157000000
+20,Quatama/NW 205th Ave Park & Ride,325 NW 205th Ave,Hillsboro,Washington,97006,TriMet,310,Existing,45.522704198900001,-122.889097031000010
+21,Sherwood Regal Cinemas Park & Ride,15995 SW Tualatin-Sherwood Rd,Sherwood,Washington,97140,Shared,50,Existing,45.369274146199999,-122.840761914000000
+22,First Presbyterian Church Park & Ride,1321 Linn Ave at Williams St,Oregon City,Clackamas,97045,Shared,21,Existing,45.337215021299997,-122.604293355000000
+23,Expo Center Park & Ride,2060 N Marine Dr at Expo Center,Portland,Multnomah,97217,Shared,300,Existing,45.605287463400003,-122.685890398000000
+24,Delta Park/Vanport Park & Ride,1940 N Victory Blvd,Portland,Multnomah,97217,TriMet,304,Existing,45.596036372199997,-122.686129204000000
+25,Emmanuel United Presbyterian Church Park & Ride,19200 S Willamette Dr,West Linn,Clackamas,97068,Shared,80,Existing,45.386877817399998,-122.640278159999990
+26,Hillsboro Parking Garage,110 SW Washington St,Hillsboro,Washington,97123,TriMet,250,Existing,45.521056683499999,-122.990537846000000
+27,Christ Church Parish Park & Ride,1060 Chandler Rd,Lake Oswego,Clackamas,97034,Shared,30,Existing,45.419854616700000,-122.676924767000000
+28,Christ the King Lutheran Church Park & Ride,11305 SW Bull Mountain Rd,Tigard,Washington,97224,Shared,30,Existing,45.414812815200001,-122.792577984000000
+29,Clackamas Community College Park & Ride,19600 S Molalla Ave,Oregon City,Clackamas,97045,Shared,40,Existing,45.321714560600000,-122.575294506000010
+30,Cedar Hills United Church of Christ Park & Ride,11695 SW Park Way,Portland,Washington,97225,Shared,46,Existing,45.508526210900001,-122.796220085000000
+31,Willow Creek/SW 185th Ave TC Park & Ride,375 SW 185th Ave,Hillsboro,Washington,97006,TriMet,600,Existing,45.518645403800001,-122.871392390000000
+32,Kern Park Christian Church Park & Ride,6828 SE Holgate Blvd,Portland,Multnomah,97206,Shared,24,Existing,45.489769737099998,-122.592346749000000
+33,Gresham City Hall Park & Ride,1297 NW Eastman Pkwy,Gresham,Multnomah,97030,Shared,417,Existing,45.505193599099997,-122.436308565000000
+34,Eleventh Church of Christ Scientist Park & Ride,3643 SW Vermont,Portland,Multnomah,97219,Shared,35,Existing,45.476410172400001,-122.715299059000000
+35,Cleveland Ave Park & Ride,1200 NE 8th St,Gresham,Multnomah,97030,TriMet,392,Existing,45.502480817200002,-122.418417785000000
+36,Boones Ferry Community Church Park & Ride,20500 SW Boones Ferry Rd,Tualatin,Washington,97062,Shared,20,Existing,45.370821048899998,-122.770961191000000
+37,Barbur Blvd Park & Ride,9712 SW Barbur Blvd,Portland,Multnomah,97219,TriMet,368,Existing,45.454237284400001,-122.717344432000000
+38,E 181st Ave Park & Ride,18324 E Burnside St,Gresham,Multnomah,97233,TriMet,247,Existing,45.521113491000001,-122.474585995000000
+39,Lake Oswego United Methodist Church Park & Ride,1855 South Shore Blvd,Lake Oswego,Clackamas,97034,Shared,34,Existing,45.407157195899998,-122.681059930000000
+40,E 122nd/Menlo Park Park & Ride,12202 E Burnside St,Portland,Multnomah,97233,TriMet,612,Existing,45.521810938500003,-122.536556039000000
+41,Milwaukie Elks Lodge Park & Ride,13121 SE McLoughlin Blvd,Milwaukie,Clackamas,97222,Shared,90,Existing,45.428382670300003,-122.635075314999990
+42,Parkrose/Sumner TC Park & Ride,9525 NE Sandy Blvd,Portland,Multnomah,97220,TriMet,193,Existing,45.559056722400001,-122.563650098000000
+43,Progress Park & Ride,SW Scholls Ferry Rd. & Hwy 217,Tigard,Washington,97008,TriMet,122,Existing,45.455284469299997,-122.783875080000000
+44,Reynolds School District Park & Ride,1204 NE 201st Ave,Troutdale,Multnomah,97060,Shared,35,Existing,45.532979852799997,-122.454531820000000
+45,St. Andrews United Presbyterian Church,3228 SW Sunset Blvd,Portland,Multnomah,97239,Shared,140,Existing,45.488537855499999,-122.710994084000010
+46,Seventh-Day Adventist Church of Beaverton,14645 SW Davis Rd,Beaverton,Washington,97007,Shared,113,Existing,45.474085343100001,-122.826912562999990
+47,Sherwood Park & Ride,SW Main & Railroad,Sherwood,Washington,97140,Shared,30,Existing,45.355164511200002,-122.842042553000000
+48,Southminster Presbyterian Church,12250 SW Denney Rd,Beaverton,Washington,97008,Shared,20,Existing,45.468985704600001,-122.803458103000000
+49,Tualatin Park & Ride,SW 72nd & Bridgeport Rd,Tualatin,Washington,97224,TriMet,466,Existing,45.395592220300003,-122.748487138000000
+50,Valley Community United Presbyterian Church,8060 SW Brentwood St,Portland,Washington,97225,Shared,63,Existing,45.489409772199998,-122.760408457000000
+51,Gateway/NE 99th Ave TC Park & Ride,1250 NE 99th Ave,Portland,Multnomah,97220,TriMet,695,Existing,45.531676741500000,-122.563050977000000
+52,University Park Baptist Church,4340 N Lombard St,Portland,Multnomah,97203,Shared,22,Existing,45.576973015800000,-122.711801894999990
+53,Tenth Church of Christ Scientist Park & Ride,5736 SE 17th Ave,Portland,Multnomah,97202,Shared,28,Existing,45.480718340599999,-122.647902044000010
+54,Central Bible Church Park & Ride,8815 NE Glisan St,Portland,Multnomah,97220,Shared,20,Existing,45.527386913000001,-122.572344441000000
+55,Tigard Park & Ride,SW 74th Ave and Pacific Hwy,Tigard,Washington,97223,TriMet,220,Existing,45.437977136400001,-122.752826930000000
+56,Hope Church Park & Ride,14790 SW Boones Ferry Rd,Lake Oswego,Clackamas,97035,Shared,12,Existing,45.418854540500000,-122.712238856000000
+57,Milwaukie Presbyterian Church Park & Ride,2416 SE Lake Rd,Milwaukie,Clackamas,97222,Shared,30,Existing,45.439587238300000,-122.637516420000000
+58,Gresham Parking Garage,523-575 NE 8th St,Gresham,Clackamas,97030,TriMet,540,Existing,45.503295841300002,-122.425510338000000
+59,City of Estacada Park & Ride,590 SE Short St,Estacada,Clackamas,97023,Shared,20,Existing,45.284863393800002,-122.332381819999990
+60,Mohawk Park & Ride,SW Martinazzi Ave and Mohawk St,Tualatin,Washington,97062,TriMet,232,Existing,45.376039844300003,-122.759757238000010
+61,SE Tacoma/Johnson Creek Park & Ride,8300 SE McLoughlin,Portland,Multnomah,97202,TriMet,318,Existing,45.462319649199998,-122.637612559000000
+62,SE Park Ave Park & Ride,2750 SE Park Ave,Milwaukie,Clackamas,97222,TriMet,402,Existing,45.429588003600003,-122.635338953000000
