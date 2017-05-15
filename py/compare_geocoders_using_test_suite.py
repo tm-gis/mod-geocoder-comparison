@@ -115,11 +115,11 @@ def get_test_suite(excel_file):
     work_book = open_workbook(excel_file, "rb")
     sheet = work_book.sheet_by_index(1)
 
-    data_legend = [str(s) for s in sheet.row_values(0)]
+    data_legend = [str(sh) for sh in sheet.row_values(0)]
 
     data_list = []
     for i in range(1, sheet.nrows):
-        current = [str(s).replace(".0", "") for s in sheet.row_values(i)]
+        current = [str(sh).replace(".0", "") for sh in sheet.row_values(i)]
         current[4] = current[4].replace(".0", "")
         current[11] = current[11].replace(".0", "")
         data_list.append(current)
@@ -210,7 +210,7 @@ def get_geocoder_result(address, geocoder_name, geocoder_dict):
         (result_lat, result_long, address) = [-1, -1, -1]
     except IndexError:
         (result_lat, result_long, address) = [-1, -1, -1]
-    return result_lat, result_long, address
+    return float(result_lat), float(result_long), address
 
 
 test_suite_legend, test_suite_data_list = get_test_suite(geocoder_excel_file)
@@ -251,29 +251,44 @@ for t in test_suite_data_list:
             type_source_total[(test_suite_type, source)] = 0
         # if g != "google":
         geocoder_lat, geocoder_long, geocoder_address = get_geocoder_result(geocoder_input, g, geocoder_api_dict)
-        if haversine(test_suite_lon, test_suite_lat, geocoder_long, geocoder_lat) <= 100:
+        if haversine(test_suite_lon, test_suite_lat, geocoder_long, geocoder_lat) <= 50:
             results_dict[g][(test_suite_type, source)] += 1
         if g == "trimet":
-            type_source_total[(test_suite_type, source)] += 1
+            if test_suite_type != "POIs":
+                type_source_total[(test_suite_type, source)] += 1
+            else:
+                if ("POIs", "Landmarks") not in type_source_total:
+                    type_source_total[("POIs", "Landmarks")] = 0
+                type_source_total[("POIs", "Landmarks")] += 1
         geocoder_responses[geocoder_input][g] = [geocoder_lat, geocoder_long, geocoder_address, test_suite_lat,
                                                  test_suite_lon]
 
 pickle.dump(geocoder_responses,
-            open(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\pickle\test_suite_responses.p", "wb"))
-# SAVE RESULT FROM GEOCODER SOMEWHERE
+            open(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\pickle\test_suite_responses_051517_50ft.p", "wb"))
 
-results_file = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\Geocoder Test Suite - Results 051117.txt"
+poi_dict = {}
+results_file = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\Geocoder Test Suite - Results 051517_50ft.txt"
 with open(results_file, "wb") as text_file:
     writer = csv.writer(text_file, delimiter="\t")
-    legend = ["Geocoder", "Type", "Source", "Correctly Geocoded", "Total Addresses"]
+    legend = ["Geocoder", "Type", "Source", "Correctly Geocoded", "Total Addresses", "PERCENTAGE CORRECT"]
     writer.writerow(legend)
     for r in results_dict:
+        poi_dict[r] = {}
         for (t, s) in results_dict[r]:
-            row = [r, t, s, results_dict[r][(t, s)], type_source_total[(t, s)]]
-            writer.writerow(row)
+            if t != "POIs":
+                row = [r, t, s, results_dict[r][(t, s)], type_source_total[(t, s)],
+                       float(results_dict[r][(t, s)]) / float(type_source_total[(t, s)])]
+                writer.writerow(row)
+            else:
+                if ("POIs", "Landmarks") not in poi_dict[r]:
+                    poi_dict[r][("POIs", "Landmarks")] = 0
+                poi_dict[r][("POIs", "Landmarks")] += results_dict[r][(t, s)]
+    for p in poi_dict:
+        row = [p, "POIs", "Landmarks", poi_dict[p][("POIs", "Landmarks")], type_source_total[("POIs", "Landmarks")]]
+        writer.writerow(row)
 del text_file
 
-responses_file = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\Geocoder Test Suite - Responses 051117.txt"
+responses_file = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\Geocoder Test Suite - Responses 051517_50ft.txt"
 with open(responses_file, "wb") as text_file:
     writer = csv.writer(text_file, delimiter="\t")
     legend = ["Geocoder", "Input", "Geocoded Latitude", "Geocoded Longitude", "Geocoded Address", "Correct Latitude",

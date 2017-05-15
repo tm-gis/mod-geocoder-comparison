@@ -1,4 +1,5 @@
-.idea
 py/Thumbs.db
 *.spyderworkspace
 *.pyc
+*.p
+*.txt
