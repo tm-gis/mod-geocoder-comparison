@@ -1,6 +1,6 @@
 import csv
 import geocoder
-from geocoder_comp_2017 import getAddrAndLatLng
+from py.geocoder_comp_2017 import getAddrAndLatLng
 import time
 
 in_csv = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\geocoder_test_suite_042117.csv"

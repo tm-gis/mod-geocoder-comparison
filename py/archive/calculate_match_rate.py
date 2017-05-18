@@ -1,5 +1,5 @@
-from geocoder_comp_2017 import parse_mapzen_response, rlis_geocode, getAddrAndLatLng
-import pickle
+from py.geocoder_comp_2017 import parse_mapzen_response, rlis_geocode, getAddrAndLatLng
+import py.pickle
 import geocoder
 import requests
 import time
@@ -7,7 +7,7 @@ from ott.geocoder.geosolr import GeoSolr
 import random
 import datetime
 
-sample_addresses = pickle.load(open(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\pickle\address_samples.p", "rb"))
+sample_addresses = py.pickle.load(open(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\pickle\address_samples.p", "rb"))
 
 tm_geocoder_url = 'http://maps.trimet.org/solr'
 tm_geocoder = GeoSolr(tm_geocoder_url)
@@ -148,4 +148,4 @@ for address in sample_addresses:
                     g = this_geocoder(anAdd, key=geocoder_dict[aGeocoder])
                 addr, lat, lng = getAddrAndLatLng(g)
             result_dict[aGeocoder][base_address].append(addr)
-pickle.dump(result_dict, open(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\pickle\full_test_suite_results.p", "wb"))
+py.pickle.dump(result_dict, open(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\pickle\full_test_suite_results.p", "wb"))

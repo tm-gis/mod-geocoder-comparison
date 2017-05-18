@@ -62,7 +62,7 @@ def parse_mapzen_response(txt):
     returns a dictionary containing the useful key/values from the most
        relevant result.
     """
-    gdict = {} # just initialize a dict for now, with status of None
+    gdict = {}  # just initialize a dict for now, with status of None
     try:
         data = json.loads(txt)
         if data['features']:  # it has at least one feature...
@@ -213,91 +213,93 @@ def get_geocoder_result(address, geocoder_name, geocoder_dict):
     return float(result_lat), float(result_long), address
 
 
-test_suite_legend, test_suite_data_list = get_test_suite(geocoder_excel_file)
-with open(geocoder_file, 'r') as inf:
-    geocoder_api_dict = eval(inf.read())
+def evaluate_test_suite():
+    test_suite_legend, test_suite_data_list = get_test_suite(geocoder_excel_file)
+    with open(geocoder_file, 'r') as inf:
+        geocoder_api_dict = eval(inf.read())
 
-results_dict = {}
-type_source_total = {}
-geocoder_responses = {}
-for t in test_suite_data_list:
-    test_suite_type = t[test_suite_legend.index("Type")]
-    source = t[test_suite_legend.index("Source")]
-    name = t[test_suite_legend.index("Name")]
-    prefix = t[test_suite_legend.index("Prefix")]
-    house_number = t[test_suite_legend.index("House_Number")]
-    unit_type = test_suite_legend.index("Unit_Type")
-    unit_number = t[test_suite_legend.index("Unit_Number")]
-    street_name = t[test_suite_legend.index("Street_Name")]
-    street_type = t[test_suite_legend.index("Street_Type")]
-    city = t[test_suite_legend.index("City")]
-    state = t[test_suite_legend.index("State")]
-    test_suite_zip = t[test_suite_legend.index("Zip")]
-    stop_id = t[test_suite_legend.index("Stop_ID")]
-    x_coord = t[test_suite_legend.index("X_Coord")]
-    y_coord = t[test_suite_legend.index("Y_Coord")]
-    test_suite_lat = float(t[test_suite_legend.index("Lat")])
-    test_suite_lon = float(t[test_suite_legend.index("Lon")])
+    results_dict = {}
+    type_source_total = {}
+    geocoder_responses = {}
+    for t in test_suite_data_list:
+        test_suite_type = t[test_suite_legend.index("Type")]
+        source = t[test_suite_legend.index("Source")]
+        name = t[test_suite_legend.index("Name")]
+        prefix = t[test_suite_legend.index("Prefix")]
+        house_number = t[test_suite_legend.index("House_Number")]
+        unit_type = test_suite_legend.index("Unit_Type")
+        unit_number = t[test_suite_legend.index("Unit_Number")]
+        street_name = t[test_suite_legend.index("Street_Name")]
+        street_type = t[test_suite_legend.index("Street_Type")]
+        city = t[test_suite_legend.index("City")]
+        state = t[test_suite_legend.index("State")]
+        test_suite_zip = t[test_suite_legend.index("Zip")]
+        stop_id = t[test_suite_legend.index("Stop_ID")]
+        x_coord = t[test_suite_legend.index("X_Coord")]
+        y_coord = t[test_suite_legend.index("Y_Coord")]
+        test_suite_lat = float(t[test_suite_legend.index("Lat")])
+        test_suite_lon = float(t[test_suite_legend.index("Lon")])
 
-    geocoder_input = get_geocoder_input(t, test_suite_legend)
-    geocoder_responses[geocoder_input] = {}
+        geocoder_input = get_geocoder_input(t, test_suite_legend)
+        geocoder_responses[geocoder_input] = {}
 
-    for g in geocoder_api_dict.keys():
-        if g not in results_dict:
-            results_dict[g] = {}
-        if (test_suite_type, source) not in results_dict[g]:
-            results_dict[g][(test_suite_type, source)] = 0
-        if (test_suite_type, source) not in type_source_total:
-            type_source_total[(test_suite_type, source)] = 0
-        # if g != "google":
-        geocoder_lat, geocoder_long, geocoder_address = get_geocoder_result(geocoder_input, g, geocoder_api_dict)
-        if haversine(test_suite_lon, test_suite_lat, geocoder_long, geocoder_lat) <= 50:
-            results_dict[g][(test_suite_type, source)] += 1
-        if g == "trimet":
-            if test_suite_type != "POIs":
-                type_source_total[(test_suite_type, source)] += 1
-            else:
-                if ("POIs", "Landmarks") not in type_source_total:
-                    type_source_total[("POIs", "Landmarks")] = 0
-                type_source_total[("POIs", "Landmarks")] += 1
-        geocoder_responses[geocoder_input][g] = [geocoder_lat, geocoder_long, geocoder_address, test_suite_lat,
-                                                 test_suite_lon]
+        for g in geocoder_api_dict.keys():
+            if g not in results_dict:
+                results_dict[g] = {}
+            if (test_suite_type, source) not in results_dict[g]:
+                results_dict[g][(test_suite_type, source)] = 0
+            if (test_suite_type, source) not in type_source_total:
+                type_source_total[(test_suite_type, source)] = 0
+            # if g != "google":
+            geocoder_lat, geocoder_long, geocoder_address = get_geocoder_result(geocoder_input, g, geocoder_api_dict)
+            if haversine(test_suite_lon, test_suite_lat, geocoder_long, geocoder_lat) <= 50:
+                results_dict[g][(test_suite_type, source)] += 1
+            if g == "trimet":
+                if test_suite_type != "POIs":
+                    type_source_total[(test_suite_type, source)] += 1
+                else:
+                    if ("POIs", "Landmarks") not in type_source_total:
+                        type_source_total[("POIs", "Landmarks")] = 0
+                    type_source_total[("POIs", "Landmarks")] += 1
+            geocoder_responses[geocoder_input][g] = [geocoder_lat, geocoder_long, geocoder_address, test_suite_lat,
+                                                     test_suite_lon]
 
-pickle.dump(geocoder_responses,
-            open(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\pickle\test_suite_responses_051517_50ft.p", "wb"))
+    pickle.dump(geocoder_responses,
+                open(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\pickle\test_suite_responses_051517_50ft.p", "wb"))
 
-poi_dict = {}
-results_file = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\Geocoder Test Suite - Results 051517_50ft.txt"
-with open(results_file, "wb") as text_file:
-    writer = csv.writer(text_file, delimiter="\t")
-    legend = ["Geocoder", "Type", "Source", "Correctly Geocoded", "Total Addresses", "PERCENTAGE CORRECT"]
-    writer.writerow(legend)
-    for r in results_dict:
-        poi_dict[r] = {}
-        for (t, s) in results_dict[r]:
-            if t != "POIs":
-                row = [r, t, s, results_dict[r][(t, s)], type_source_total[(t, s)],
-                       float(results_dict[r][(t, s)]) / float(type_source_total[(t, s)])]
-                writer.writerow(row)
-            else:
-                if ("POIs", "Landmarks") not in poi_dict[r]:
-                    poi_dict[r][("POIs", "Landmarks")] = 0
-                poi_dict[r][("POIs", "Landmarks")] += results_dict[r][(t, s)]
-    for p in poi_dict:
-        row = [p, "POIs", "Landmarks", poi_dict[p][("POIs", "Landmarks")], type_source_total[("POIs", "Landmarks")]]
-        writer.writerow(row)
-del text_file
-
-responses_file = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\Geocoder Test Suite - Responses 051517_50ft.txt"
-with open(responses_file, "wb") as text_file:
-    writer = csv.writer(text_file, delimiter="\t")
-    legend = ["Geocoder", "Input", "Geocoded Latitude", "Geocoded Longitude", "Geocoded Address", "Correct Latitude",
-              "Correct Longitude"]
-    writer.writerow(legend)
-    for geocoder_input in geocoder_responses:
-        for geocoder in geocoder_responses[geocoder_input]:
-            row = [geocoder, geocoder_input, geocoder_responses[geocoder_input][geocoder][0],
-                   geocoder_responses[geocoder_input][geocoder][1], geocoder_responses[geocoder_input][geocoder][2],
-                   geocoder_responses[geocoder_input][geocoder][3], geocoder_responses[geocoder_input][geocoder][4]]
+    poi_dict = {}
+    results_file = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\Geocoder Test Suite - Results 051517_50ft.txt"
+    with open(results_file, "wb") as text_file:
+        writer = csv.writer(text_file, delimiter="\t")
+        legend = ["Geocoder", "Type", "Source", "Correctly Geocoded", "Total Addresses", "PERCENTAGE CORRECT"]
+        writer.writerow(legend)
+        for r in results_dict:
+            poi_dict[r] = {}
+            for (t, s) in results_dict[r]:
+                if t != "POIs":
+                    row = [r, t, s, results_dict[r][(t, s)], type_source_total[(t, s)],
+                           float(results_dict[r][(t, s)]) / float(type_source_total[(t, s)])]
+                    writer.writerow(row)
+                else:
+                    if ("POIs", "Landmarks") not in poi_dict[r]:
+                        poi_dict[r][("POIs", "Landmarks")] = 0
+                    poi_dict[r][("POIs", "Landmarks")] += results_dict[r][(t, s)]
+        for p in poi_dict:
+            row = [p, "POIs", "Landmarks", poi_dict[p][("POIs", "Landmarks")], type_source_total[("POIs", "Landmarks")]]
             writer.writerow(row)
-del text_file
+    del text_file
+
+    responses_file = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\Geocoder Test Suite - Responses 051517_50ft.txt"
+    with open(responses_file, "wb") as text_file:
+        writer = csv.writer(text_file, delimiter="\t")
+        legend = ["Geocoder", "Input", "Geocoded Latitude", "Geocoded Longitude", "Geocoded Address", "Correct Latitude",
+                  "Correct Longitude"]
+        writer.writerow(legend)
+        for geocoder_input in geocoder_responses:
+            for geocoder in geocoder_responses[geocoder_input]:
+                row = [geocoder, geocoder_input, geocoder_responses[geocoder_input][geocoder][0],
+                       geocoder_responses[geocoder_input][geocoder][1], geocoder_responses[geocoder_input][geocoder][2],
+                       geocoder_responses[geocoder_input][geocoder][3], geocoder_responses[geocoder_input][geocoder][4]]
+                writer.writerow(row)
+    del text_file
+    return

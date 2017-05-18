@@ -1,6 +1,6 @@
 import arcpy
 import os
-import pickle
+import py.pickle
 import csv
 import random
 import datetime
@@ -118,10 +118,10 @@ def sample_open_addresses(county_pop_dict):
 
 seven_counties, block_groups = create_base_layers(county_fc, oregon_bg_fc, washington_bg_fc)
 county_pop = calculate_population_by_county(seven_counties, block_groups)
-pickle.dump(county_pop, open(county_pop_pickle_file, "wb"))
+py.pickle.dump(county_pop, open(county_pop_pickle_file, "wb"))
 # county_pop = pickle.load(open(r"G:\PUBLIC\GIS\Geocoding\Log_Files\python\pickle\county_pop_dict.p", "rb"))
 
 address_samples = sample_open_addresses(county_pop)
-pickle.dump(address_samples, open(address_sample_pickle_file, "wb"))
+py.pickle.dump(address_samples, open(address_sample_pickle_file, "wb"))
 arcpy.Delete_management(seven_counties)
 arcpy.Delete_management(block_groups)
