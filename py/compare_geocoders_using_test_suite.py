@@ -8,14 +8,26 @@ from unidecode import unidecode
 from math import radians, cos, sin, asin, sqrt
 import csv
 import pickle
-from xlrd import open_workbook
 from ott.geocoder.geosolr import GeoSolr
+from google_sheets_api_functions import get_credentials
+import httplib2
+from apiclient import discovery
+import datetime
+import os
+import shutil
 
 pdxlatlng = [45.5231, -122.6765]
 # dict formatted text file of geocoders with API keys
 geocoder_file = 'P:/geocoder_dict.txt'
-
-geocoder_excel_file = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\xslx\Geocoder Test Suite - Final.xlsx"
+spreadsheet = "1b0zxcb_5w0M6ydStkVlL9ceIAs5P_gJhdQNLfhd0pyA"
+spreadsheet_range = 'Locations!A1:Q'
+results_dir = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\results"
+current = "%02d" % datetime.datetime.now().month + "%02d" % datetime.datetime.now().day + \
+          str(datetime.datetime.now().year)[2:]
+out_dir = os.path.join(results_dir, current)
+if os.path.exists(out_dir):
+    shutil.rmtree(out_dir)
+os.mkdir(out_dir)
 
 
 def haversine(lon1, lat1, lon2, lat2):
@@ -111,33 +123,39 @@ def rlis_geocode(addr_str, token):
             return json_rsp['data'][0]['lat'], json_rsp['data'][0]['lng'], json_rsp['data'][0]['fullAddress']
 
 
-def get_test_suite(excel_file):
-    work_book = open_workbook(excel_file, "rb")
-    sheet = work_book.sheet_by_index(1)
+def get_test_suite(spreadsheet_id, range_name):
+    credentials = get_credentials()
+    http = credentials.authorize(httplib2.Http())
+    discovery_url = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
+    service = discovery.build('sheets', 'v4', http=http, discoveryServiceUrl=discovery_url)
 
-    data_legend = [str(sh) for sh in sheet.row_values(0)]
+    result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_name).execute()
+    values = result.get('values', [])
 
+    data_legend = []
     data_list = []
-    for i in range(1, sheet.nrows):
-        current = [str(sh).replace(".0", "") for sh in sheet.row_values(i)]
-        current[4] = current[4].replace(".0", "")
-        current[11] = current[11].replace(".0", "")
-        data_list.append(current)
+    for row in values:
+        if row[0] == "Type":
+            data_legend = [str(r) for r in row]
+        else:
+            current = [str(r).replace(".0", "") for r in row]
+            data_list.append(current)
     return data_legend, data_list
 
 
 def get_geocoder_input(test_suite_data_row, test_suite_data_legend):
-    test_suite_columns = {("Venue Names", "Log Files"): "Name",
+    test_suite_columns = {("Top User Submissions", "Log Files"): "Name",
                           ("Intersections", "Log Files"): "Name",
-                          ("Misspelling", "Log Files"): "Name",
+                          ("Commonly Misspelled Locations", "Log Files"): "Name",
                           ("Multifamily Residential", "MAF Multifamily"): "Address",
                           ("Transit POI", "TriMet Geodata"): "Name",
                           ("Theoretical Addresses", "MAF Interpolation"): "Address",
-                          ("Grocery Stores", "Validated Landmarks"): "Name",
+                          ("eFare Outlets", "Validated Landmarks"): "Name",
                           ("POIs", "*"): "Address",
-                          ("Residential Addresses", "MAF - Leading Zero"): "Address",
+                          ("Leading Zero Addresses", "MAF"): "Address",
                           ("Transit POI", "Log files - Stop ID"): "Name",
-                          ("Vancouver Addresses", "User Selected"): "Address"}
+                          ("Vancouver, WA Addresses", "User Selected"): "Address",
+                          ("Locations with Aliases", "User Selected"): "Address"}
 
     test_suite_name = ", ".join(k for k in [test_suite_data_row[test_suite_data_legend.index("Name")],
                                             test_suite_data_row[test_suite_data_legend.index("City")],
@@ -214,7 +232,7 @@ def get_geocoder_result(address, geocoder_name, geocoder_dict):
 
 
 def evaluate_test_suite():
-    test_suite_legend, test_suite_data_list = get_test_suite(geocoder_excel_file)
+    test_suite_legend, test_suite_data_list = get_test_suite(spreadsheet, spreadsheet_range)
     with open(geocoder_file, 'r') as inf:
         geocoder_api_dict = eval(inf.read())
 
@@ -244,31 +262,31 @@ def evaluate_test_suite():
         geocoder_responses[geocoder_input] = {}
 
         for g in geocoder_api_dict.keys():
-            if g not in results_dict:
-                results_dict[g] = {}
-            if (test_suite_type, source) not in results_dict[g]:
-                results_dict[g][(test_suite_type, source)] = 0
-            if (test_suite_type, source) not in type_source_total:
-                type_source_total[(test_suite_type, source)] = 0
-            # if g != "google":
-            geocoder_lat, geocoder_long, geocoder_address = get_geocoder_result(geocoder_input, g, geocoder_api_dict)
-            if haversine(test_suite_lon, test_suite_lat, geocoder_long, geocoder_lat) <= 50:
-                results_dict[g][(test_suite_type, source)] += 1
-            if g == "trimet":
-                if test_suite_type != "POIs":
-                    type_source_total[(test_suite_type, source)] += 1
-                else:
-                    if ("POIs", "Landmarks") not in type_source_total:
-                        type_source_total[("POIs", "Landmarks")] = 0
-                    type_source_total[("POIs", "Landmarks")] += 1
-            geocoder_responses[geocoder_input][g] = [geocoder_lat, geocoder_long, geocoder_address, test_suite_lat,
-                                                     test_suite_lon]
+            if g != "google":
+                if g not in results_dict:
+                    results_dict[g] = {}
+                if (test_suite_type, source) not in results_dict[g]:
+                    results_dict[g][(test_suite_type, source)] = 0
+                if (test_suite_type, source) not in type_source_total:
+                    type_source_total[(test_suite_type, source)] = 0
+                # if g != "google":
+                geocoder_lat, geocoder_long, geocoder_address = get_geocoder_result(geocoder_input, g, geocoder_api_dict)
+                if haversine(test_suite_lon, test_suite_lat, geocoder_long, geocoder_lat) <= 50:
+                    results_dict[g][(test_suite_type, source)] += 1
+                if g == "trimet":
+                    if test_suite_type != "POIs":
+                        type_source_total[(test_suite_type, source)] += 1
+                    else:
+                        if ("POIs", "Landmarks") not in type_source_total:
+                            type_source_total[("POIs", "Landmarks")] = 0
+                        type_source_total[("POIs", "Landmarks")] += 1
+                geocoder_responses[geocoder_input][g] = [geocoder_lat, geocoder_long, geocoder_address, test_suite_lat,
+                                                         test_suite_lon]
 
-    pickle.dump(geocoder_responses,
-                open(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\pickle\test_suite_responses_051517_50ft.p", "wb"))
+    pickle.dump(geocoder_responses, open(os.path.join(out_dir, "responses.p"), "wb"))
 
     poi_dict = {}
-    results_file = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\Geocoder Test Suite - Results 051517_50ft.txt"
+    results_file = os.path.join(out_dir, "results.txt")
     with open(results_file, "wb") as text_file:
         writer = csv.writer(text_file, delimiter="\t")
         legend = ["Geocoder", "Type", "Source", "Correctly Geocoded", "Total Addresses", "PERCENTAGE CORRECT"]
@@ -289,11 +307,11 @@ def evaluate_test_suite():
             writer.writerow(row)
     del text_file
 
-    responses_file = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\Geocoder Test Suite - Responses 051517_50ft.txt"
+    responses_file = os.path.join(out_dir, "responses.txt")
     with open(responses_file, "wb") as text_file:
         writer = csv.writer(text_file, delimiter="\t")
-        legend = ["Geocoder", "Input", "Geocoded Latitude", "Geocoded Longitude", "Geocoded Address", "Correct Latitude",
-                  "Correct Longitude"]
+        legend = ["Geocoder", "Input", "Geocoded Latitude", "Geocoded Longitude", "Geocoded Address",
+                  "Correct Latitude", "Correct Longitude"]
         writer.writerow(legend)
         for geocoder_input in geocoder_responses:
             for geocoder in geocoder_responses[geocoder_input]:
@@ -303,3 +321,7 @@ def evaluate_test_suite():
                 writer.writerow(row)
     del text_file
     return
+
+
+if __name__ == '__main__':
+    evaluate_test_suite()

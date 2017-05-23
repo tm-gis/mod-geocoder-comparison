@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88b91d97-0dd7-4447-b3c9-cca6bd47822a" name="Default" comment="Updates to geocoder testing, added summary charts">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/py/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/py/archive/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/py/parse_pickle_based_on_distance.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/py/verify_test_suite.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/results/Geocoder Test Suite - Results 051517 (100 feet).xlsx" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xslx/Geocoder Test Suite - Final.xlsx" afterPath="$PROJECT_DIR$/xslx/Geocoder Test Suite - Final.xlsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py" afterPath="$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/calculate_match_rate.py" afterPath="$PROJECT_DIR$/py/archive/calculate_match_rate.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/evaluate_geocode_candidates.py" afterPath="$PROJECT_DIR$/py/archive/evaluate_geocode_candidates.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/generate_open_addresses_sample_based_on_population.py" afterPath="$PROJECT_DIR$/py/archive/generate_open_addresses_sample_based_on_population.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/multifamily_addresses.py" afterPath="$PROJECT_DIR$/py/archive/multifamily_addresses.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/theoretical_addresses.py" afterPath="$PROJECT_DIR$/py/archive/theoretical_addresses.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,32 +17,38 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="compare_geocoders_using_test_suite.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2901">
-              <caret line="282" column="21" lean-forward="false" selection-start-line="282" selection-start-column="21" selection-end-line="282" selection-end-column="21" />
-              <folding>
-                <element signature="e#25#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="parse_pickle_based_on_distance.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/py/parse_pickle_based_on_distance.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="793">
-              <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.7837666">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="compare_geocoders_using_test_suite.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="442">
+                  <caret line="191" column="4" lean-forward="false" selection-start-line="191" selection-start-column="4" selection-end-line="191" selection-end-column="50" />
+                  <folding>
+                    <element signature="e#25#40#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="parse_pickle_based_on_distance.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/py/parse_pickle_based_on_distance.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="595">
+                  <caret line="38" column="65" lean-forward="true" selection-start-line="38" selection-start-column="65" selection-end-line="38" selection-end-column="65" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -92,11 +87,12 @@
         <option value="$PROJECT_DIR$/py/multifamily_addresses.py" />
         <option value="$PROJECT_DIR$/py/verify_test_suite.py" />
         <option value="$PROJECT_DIR$/py/geocoder_comp_2017.py" />
-        <option value="$PROJECT_DIR$/py/scratch.py" />
         <option value="$PROJECT_DIR$/py/compare_geocoders_using_test_suite_MS.py" />
         <option value="$PROJECT_DIR$/py/archive/evaluate_geocode_candidates.py" />
-        <option value="$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py" />
         <option value="$PROJECT_DIR$/py/parse_pickle_based_on_distance.py" />
+        <option value="$PROJECT_DIR$/py/scratch.py" />
+        <option value="$PROJECT_DIR$/py/quickstart.py" />
+        <option value="$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py" />
       </list>
     </option>
   </component>
@@ -121,7 +117,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -151,6 +146,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -187,24 +183,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.parse_pickle_based_on_distance">
-    <configuration default="false" name="multifamily_addresses" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/py" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="geocoder_comparison" />
-      <option name="SCRIPT_NAME" value="G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\archive\multifamily_addresses.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.compare_geocoders_using_test_suite">
     <configuration default="false" name="verify_test_suite" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -269,6 +248,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="geocoder_comparison" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/py/parse_pickle_based_on_distance.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="quickstart" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="geocoder_comparison" />
+      <option name="SCRIPT_NAME" value="G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\google_sheets_api_functions.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -419,19 +415,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.multifamily_addresses" />
-      <item index="1" class="java.lang.String" itemvalue="Python.verify_test_suite" />
-      <item index="2" class="java.lang.String" itemvalue="Python.geocoder_comp_2017" />
-      <item index="3" class="java.lang.String" itemvalue="Python.compare_geocoders_using_test_suite" />
-      <item index="4" class="java.lang.String" itemvalue="Python.parse_pickle_based_on_distance" />
+      <item index="0" class="java.lang.String" itemvalue="Python.verify_test_suite" />
+      <item index="1" class="java.lang.String" itemvalue="Python.geocoder_comp_2017" />
+      <item index="2" class="java.lang.String" itemvalue="Python.compare_geocoders_using_test_suite" />
+      <item index="3" class="java.lang.String" itemvalue="Python.parse_pickle_based_on_distance" />
+      <item index="4" class="java.lang.String" itemvalue="Python.quickstart" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.parse_pickle_based_on_distance" />
-        <item index="1" class="java.lang.String" itemvalue="Python.compare_geocoders_using_test_suite" />
-        <item index="2" class="java.lang.String" itemvalue="Python.geocoder_comp_2017" />
-        <item index="3" class="java.lang.String" itemvalue="Python.verify_test_suite" />
-        <item index="4" class="java.lang.String" itemvalue="Python.multifamily_addresses" />
+        <item index="0" class="java.lang.String" itemvalue="Python.compare_geocoders_using_test_suite" />
+        <item index="1" class="java.lang.String" itemvalue="Python.quickstart" />
+        <item index="2" class="java.lang.String" itemvalue="Python.parse_pickle_based_on_distance" />
+        <item index="3" class="java.lang.String" itemvalue="Python.geocoder_comp_2017" />
+        <item index="4" class="java.lang.String" itemvalue="Python.verify_test_suite" />
       </list>
     </recent_temporary>
   </component>
@@ -460,8 +456,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1691254" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -469,19 +465,19 @@
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25460455" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="-104" y="205" width="1920" height="223" />
+      <window_info id="Python Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25460455" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="-104" y="205" width="1920" height="223" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2156013" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23726977" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -733,7 +729,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../Capital_projects/Division_BRT_Stops/python/calculate_line4_distances.py" />
-    <entry file="file://$PROJECT_DIR$/py/scratch.py" />
     <entry file="file://$PROJECT_DIR$/py/compare_geocoders_using_test_suite_MS.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
@@ -770,20 +765,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/py/google_sheets_api_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="66" column="29" lean-forward="false" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/py/parse_pickle_based_on_distance.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="793">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="595">
+          <caret line="38" column="65" lean-forward="true" selection-start-line="38" selection-start-column="65" selection-end-line="38" selection-end-column="65" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2901">
-          <caret line="282" column="21" lean-forward="false" selection-start-line="282" selection-start-column="21" selection-end-line="282" selection-end-column="21" />
+        <state relative-caret-position="442">
+          <caret line="191" column="4" lean-forward="false" selection-start-line="191" selection-start-column="4" selection-end-line="191" selection-end-column="50" />
           <folding>
             <element signature="e#25#40#0" expanded="true" />
           </folding>
