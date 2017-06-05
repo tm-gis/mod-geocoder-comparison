@@ -7,10 +7,11 @@ sys.path.append(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py")
 
 from compare_geocoders_using_test_suite import haversine, get_test_suite, get_geocoder_input
 
-geocoder_responses = pickle.load(open(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\pickle\test_suite_responses_051517.p", "rb"))
-geocoder_excel_file = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\xslx\Geocoder Test Suite - Final.xlsx"
+geocoder_responses = pickle.load(open(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\results\052317\responses.p", "rb"))
+spreadsheet = "1b0zxcb_5w0M6ydStkVlL9ceIAs5P_gJhdQNLfhd0pyA"
+spreadsheet_range = 'Locations!A1:Q'
 
-test_suite_legend, test_suite_data_list = get_test_suite(geocoder_excel_file)
+test_suite_legend, test_suite_data_list = get_test_suite(spreadsheet, spreadsheet_range)
 
 results_dict = {}
 type_source_total = {}
@@ -59,7 +60,7 @@ def compare_geocoders_using_distance(distance_feet):
                         type_source_total[("POIs", "Landmarks")] += 1
 
     poi_dict = {}
-    results_file = os.path.join(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\distance_comparison_051717",
+    results_file = os.path.join(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\distance_comparison_052317",
                                 str(distance_feet) + ".txt")
     with open(results_file, "wb") as text_file:
         writer = csv.writer(text_file, delimiter="\t")

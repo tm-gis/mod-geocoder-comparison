@@ -3,3 +3,9 @@ py/Thumbs.db
 *.pyc
 *.p
 *.txt
+shp
+csv
+xlsx
+py/client_secret.json
+mxd
+json

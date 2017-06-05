@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-
+from __future__ import print_function
 import geocoder
 import requests
 import json
@@ -9,25 +8,27 @@ from math import radians, cos, sin, asin, sqrt
 import csv
 import pickle
 from ott.geocoder.geosolr import GeoSolr
-from google_sheets_api_functions import get_credentials
-import httplib2
-from apiclient import discovery
 import datetime
-import os
 import shutil
+import httplib2
+import os
+from apiclient import discovery
+from oauth2client import client
+from oauth2client import tools
+from oauth2client.file import Storage
+
+SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
+CLIENT_SECRET_FILE = 'client_secret.json'
+APPLICATION_NAME = 'Google Sheets API Python Quickstart'
 
 pdxlatlng = [45.5231, -122.6765]
 # dict formatted text file of geocoders with API keys
 geocoder_file = 'P:/geocoder_dict.txt'
 spreadsheet = "1b0zxcb_5w0M6ydStkVlL9ceIAs5P_gJhdQNLfhd0pyA"
-spreadsheet_range = 'Locations!A1:Q'
+spreadsheet_range = 'Locations!A1:S'
 results_dir = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\results"
 current = "%02d" % datetime.datetime.now().month + "%02d" % datetime.datetime.now().day + \
           str(datetime.datetime.now().year)[2:]
-out_dir = os.path.join(results_dir, current)
-if os.path.exists(out_dir):
-    shutil.rmtree(out_dir)
-os.mkdir(out_dir)
 
 
 def haversine(lon1, lat1, lon2, lat2):
@@ -64,7 +65,7 @@ def get_address_lat_lng(geocoder_response):
         address = ''
         latitude = 0
         longitude = 0
-    return latitude, longitude, address
+    return float(latitude), float(longitude), address
 
 
 def parse_mapzen_response(txt):
@@ -123,6 +124,32 @@ def rlis_geocode(addr_str, token):
             return json_rsp['data'][0]['lat'], json_rsp['data'][0]['lng'], json_rsp['data'][0]['fullAddress']
 
 
+def get_credentials():
+    """Gets valid user credentials from storage.
+
+    If nothing has been stored, or if the stored credentials are invalid,
+    the OAuth2 flow is completed to obtain the new credentials.
+
+    Returns:
+        Credentials, the obtained credential.
+    """
+    home_dir = os.path.expanduser('~')
+    credential_dir = os.path.join(home_dir, '.credentials')
+    if not os.path.exists(credential_dir):
+        os.makedirs(credential_dir)
+    credential_path = os.path.join(credential_dir,
+                                   'sheets.googleapis.com-python-quickstart.json')
+
+    store = Storage(credential_path)
+    credentials = store.get()
+    if not credentials or credentials.invalid:
+        flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE, SCOPES)
+        flow.user_agent = APPLICATION_NAME
+        credentials = tools.run(flow, store)
+        print('Storing credentials to ' + credential_path)
+    return credentials
+
+
 def get_test_suite(spreadsheet_id, range_name):
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
@@ -135,11 +162,11 @@ def get_test_suite(spreadsheet_id, range_name):
     data_legend = []
     data_list = []
     for row in values:
-        if row[0] == "Type":
+        if row[0] == "Location_ID":
             data_legend = [str(r) for r in row]
         else:
-            current = [str(r).replace(".0", "") for r in row]
-            data_list.append(current)
+            current_row = [str(r) for r in row]
+            data_list.append(current_row)
     return data_legend, data_list
 
 
@@ -228,7 +255,7 @@ def get_geocoder_result(address, geocoder_name, geocoder_dict):
         (result_lat, result_long, address) = [-1, -1, -1]
     except IndexError:
         (result_lat, result_long, address) = [-1, -1, -1]
-    return float(result_lat), float(result_long), address
+    return result_lat, result_long, address
 
 
 def evaluate_test_suite():
@@ -262,26 +289,26 @@ def evaluate_test_suite():
         geocoder_responses[geocoder_input] = {}
 
         for g in geocoder_api_dict.keys():
-            if g != "google":
-                if g not in results_dict:
-                    results_dict[g] = {}
-                if (test_suite_type, source) not in results_dict[g]:
-                    results_dict[g][(test_suite_type, source)] = 0
-                if (test_suite_type, source) not in type_source_total:
-                    type_source_total[(test_suite_type, source)] = 0
-                # if g != "google":
-                geocoder_lat, geocoder_long, geocoder_address = get_geocoder_result(geocoder_input, g, geocoder_api_dict)
-                if haversine(test_suite_lon, test_suite_lat, geocoder_long, geocoder_lat) <= 50:
-                    results_dict[g][(test_suite_type, source)] += 1
-                if g == "trimet":
-                    if test_suite_type != "POIs":
-                        type_source_total[(test_suite_type, source)] += 1
-                    else:
-                        if ("POIs", "Landmarks") not in type_source_total:
-                            type_source_total[("POIs", "Landmarks")] = 0
-                        type_source_total[("POIs", "Landmarks")] += 1
-                geocoder_responses[geocoder_input][g] = [geocoder_lat, geocoder_long, geocoder_address, test_suite_lat,
-                                                         test_suite_lon]
+            # if g != "google":
+            if g not in results_dict:
+                results_dict[g] = {}
+            if (test_suite_type, source) not in results_dict[g]:
+                results_dict[g][(test_suite_type, source)] = 0
+            if (test_suite_type, source) not in type_source_total:
+                type_source_total[(test_suite_type, source)] = 0
+            # if g != "google":
+            geocoder_lat, geocoder_long, geocoder_address = get_geocoder_result(geocoder_input, g, geocoder_api_dict)
+            if haversine(test_suite_lon, test_suite_lat, geocoder_long, geocoder_lat) <= 50:
+                results_dict[g][(test_suite_type, source)] += 1
+            if g == "trimet":
+                if test_suite_type != "POIs":
+                    type_source_total[(test_suite_type, source)] += 1
+                else:
+                    if ("POIs", "Landmarks") not in type_source_total:
+                        type_source_total[("POIs", "Landmarks")] = 0
+                    type_source_total[("POIs", "Landmarks")] += 1
+            geocoder_responses[geocoder_input][g] = [geocoder_lat, geocoder_long, geocoder_address, test_suite_lat,
+                                                     test_suite_lon]
 
     pickle.dump(geocoder_responses, open(os.path.join(out_dir, "responses.p"), "wb"))
 
@@ -324,4 +351,8 @@ def evaluate_test_suite():
 
 
 if __name__ == '__main__':
+    out_dir = os.path.join(results_dir, current)
+    if os.path.exists(out_dir):
+        shutil.rmtree(out_dir)
+    os.mkdir(out_dir)
     evaluate_test_suite()
