@@ -1,91 +1,71 @@
-import sys
 import os
-import psycopg2
-sys.path.append(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py")
-from compare_geocoders_using_test_suite import get_test_suite
 from subprocess import call
 import arcpy
+import math
+from apiclient import discovery
+from oauth2client import client
+from oauth2client import tools
+from oauth2client.file import Storage
+import httplib2
+
+SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
+CLIENT_SECRET_FILE = 'client_secret.json'
+APPLICATION_NAME = 'Google Sheets API Python Quickstart'
 
 spreadsheet = "1b0zxcb_5w0M6ydStkVlL9ceIAs5P_gJhdQNLfhd0pyA"
-spreadsheet_range = "Locations!A1:S"
-db_name = "geocoder_test_suite"
-user = "postgres"
-password = ""
-host = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\db"
-port = "5432"
+spreadsheet_range = "Locations!A1:T"
 gdb = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\shp\data.gdb"
 taxlots_shp = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\shp\taxlots.shp"
 shp_dir = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\shp"
 
 
-# start up the server using pg_ctl
-def start_server():
-    try:
-        call(["pg_ctl", "-D", "G:\PUBLIC\GIS\Geocoding\geocoder_comparison\db", "start"])
-    except:
-        pass
-    return
+def get_credentials():
+    """Gets valid user credentials from storage.
 
-test_suite_legend, test_suite_data_list = get_test_suite(spreadsheet, spreadsheet_range)
-connection_string = "dbname=%s user=%s password=%s host=%s port=%s" % (db_name, user, password, host, port)
+    If nothing has been stored, or if the stored credentials are invalid,
+    the OAuth2 flow is completed to obtain the new credentials.
+
+    Returns:
+        Credentials, the obtained credential.
+    """
+    home_dir = os.path.expanduser('~')
+    credential_dir = os.path.join(home_dir, '.credentials')
+    if not os.path.exists(credential_dir):
+        os.makedirs(credential_dir)
+    credential_path = os.path.join(credential_dir,
+                                   'sheets.googleapis.com-python-quickstart.json')
+
+    store = Storage(credential_path)
+    credentials = store.get()
+    if not credentials or credentials.invalid:
+        flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE, SCOPES)
+        flow.user_agent = APPLICATION_NAME
+        credentials = tools.run(flow, store)
+        print('Storing credentials to ' + credential_path)
+    return credentials
 
 
-def import_test_suite():
-    start_server()
-    conn = psycopg2.connect(connection_string)
+def get_test_suite(spreadsheet_id, range_name):
+    credentials = get_credentials()
+    http = credentials.authorize(httplib2.Http())
+    discovery_url = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
+    service = discovery.build('sheets', 'v4', http=http, discoveryServiceUrl=discovery_url)
 
-    field_type_dict = {"Location_ID": "integer primary key",
-                       "Category": "varchar(255)",
-                       "Type": "varchar(255)",
-                       "Source": "varchar(255)",
-                       "Name": "varchar(255)",
-                       "Prefix": "varchar(25)",
-                       "House_Number": "varchar(25)",
-                       "Unit_Type": "varchar(25)",
-                       "Unit_Number": "varchar(25)",
-                       "Street_Name": "varchar(255)",
-                       "Street_Type": "varchar(25)",
-                       "City": "varchar(25)",
-                       "State": "varchar(25)",
-                       "Zip": "varchar(5)",
-                       "Stop_ID": "varchar(25)",
-                       "X_Coord": "varchar(25)",
-                       "Y_Coord": "varchar(25)",
-                       "Lat": "double precision",
-                       "Lon": "double precision"}
+    result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_name).execute()
+    values = result.get('values', [])
 
-    create_table_sql = "CREATE TABLE locations ("
-    for l in test_suite_legend:
-        if l != test_suite_legend[len(test_suite_legend) - 1]:
-            create_table_sql += (l + " " + field_type_dict[l] + ", ")
+    data_legend = []
+    data_list = []
+    for row in values:
+        if row[0] == "Location_ID":
+            data_legend = [str(r) for r in row]
         else:
-            create_table_sql += (l + " " + field_type_dict[l])
-    create_table_sql += ");"
-
-    cur = conn.cursor()
-    cur.execute(create_table_sql)
-
-    add_geometry_sql = "SELECT AddGeometryColumn('locations', 'geometry', '4326', 'POINT', 2);"
-    cur.execute(add_geometry_sql)
-
-    for data_row in test_suite_data_list:
-        insert_sql = "INSERT INTO locations (" + ", ".join(t for t in test_suite_legend) + \
-                     ") VALUES (" + "%s, " * (len(test_suite_legend) - 1) + "%s);"
-        insert_row = data_row[:]
-        insert_row[test_suite_legend.index("Location_ID")] = int(insert_row[test_suite_legend.index("Location_ID")])
-        insert_row[test_suite_legend.index("Lat")] = float(insert_row[test_suite_legend.index("Lat")])
-        insert_row[test_suite_legend.index("Lon")] = float(insert_row[test_suite_legend.index("Lon")])
-        cur.execute(insert_sql, insert_row)
-
-    update_geometry_sql = "UPDATE locations SET geometry = ST_SetSRID(ST_MakePoint(Lon, Lat), 4326);"
-    cur.execute(update_geometry_sql)
-    conn.commit()
-    cur.close()
-    conn.close()
-    return
+            current_row = [str(r) for r in row]
+            data_list.append(current_row)
+    return data_legend, data_list
 
 
-def select_taxlots():
+def create_polygons():
     wgs84 = arcpy.SpatialReference(u'Geographic Coordinate Systems/World/WGS 1984')
     locations_fc = os.path.join(gdb, "locations")
     if not arcpy.Exists(locations_fc):
@@ -109,7 +89,8 @@ def select_taxlots():
                        "X_Coord": "TEXT",
                        "Y_Coord": "TEXT",
                        "Lat": "DOUBLE",
-                       "Lon": "DOUBLE"}
+                       "Lon": "DOUBLE",
+                       "Request": "TEXT"}
     for t in test_suite_legend:
         arcpy.AddField_management(locations_fc, t, field_type_dict[t])
     insert_cursor = arcpy.da.InsertCursor(locations_fc, test_suite_legend + ["SHAPE@X", "SHAPE@Y"])
@@ -156,16 +137,24 @@ def select_taxlots():
     insert_cursor = arcpy.da.InsertCursor(out_polygons, insert_legend + ["SHAPE@"])
     for t in test_suite_data_list:
         loc_id = int(t[test_suite_legend.index("Location_ID")])
-        if t[test_suite_legend.index("Type")] in ["Intersections", "Bus Stop IDs"]:
+        if t[test_suite_legend.index("Type")] in ["Intersections", "Bus Stop IDs", "Theoretical Addresses"] or \
+                        t[test_suite_legend.index("Category")] in ["Transit POI"]:
             lat, lon = float(location_to_tlid[loc_id][3]), float(location_to_tlid[loc_id][4])
-            west = lon - 0.00005
-            east = lon + 0.00005
-            north = lat + 0.00005
-            south = lat - 0.00005
-            vertices = [arcpy.Point(west, north), arcpy.Point(east, north), arcpy.Point(east, south),
-                        arcpy.Point(west, south)]
-            array = arcpy.Array(vertices)
-            shape = arcpy.Polygon(array, wgs84)
+            circle = []
+
+            if t[test_suite_legend.index("Category")] in ["Transit POI"] or t[test_suite_legend.index("Type")] in \
+                    ["Bus Stop IDs"]:
+                buffer_distance = 0.00003
+            else:
+                buffer_distance = 0.0001
+            for i in range(1, 361):
+                r = math.radians(i)
+                x = lon + buffer_distance * 1.5 * math.cos(r)
+                y = lat + buffer_distance * math.sin(r)
+                circle.append(arcpy.Point(x, y))
+
+            circle_array = arcpy.Array(circle)
+            shape = arcpy.Polygon(circle_array, wgs84)
         else:
             shape = tlid_shape_dict[location_to_tlid[loc_id][2]]
         row = t + [shape]
@@ -177,8 +166,46 @@ def select_taxlots():
     arcpy.Delete_management(projected_locations_fc)
     arcpy.Delete_management(join_fc)
     arcpy.Delete_management(projected_taxlots)
+    return out_polygons
+
+
+def import_test_suite(in_polygons, db_name):
+    # start up the server using pg_ctl
+    def start_server():
+        try:
+            call(["pg_ctl", "-D", "G:\PUBLIC\GIS\Geocoding\geocoder_comparison\db", "start"])
+        except:
+            pass
+        return
+    start_server()
+    command_line = "shp2pgsql -I -s 4326 %s | psql -U lint -d %s" % (in_polygons.lower(), db_name)
+    os.system(command_line)
     return
 
+
 if __name__ == '__main__':
-    # import_test_suite()
-    select_taxlots()
+    test_suite_legend, test_suite_data_list = get_test_suite(spreadsheet, spreadsheet_range)
+    location_polygons = create_polygons()
+    location_polygons = os.path.join(shp_dir, "location_polygons.shp")
+    import_test_suite(location_polygons, "geocoder_test_suite")
+
+# ---------------only used for the mapbox shapefile to json--------------------------
+# # ogr2ogr -f GeoJSON locations.json location_polygons_mapbox.shp -lco RFC7946=YES
+# arcpy.AddField_management("location_polygons_mapbox", "fill", "TEXT")
+# arcpy.AddField_management("location_polygons_mapbox", "fill_opaci", "FLOAT")
+# arcpy.AddField_management("location_polygons_mapbox", "title", "TEXT")
+# arcpy.AddField_management("location_polygons_mapbox", "descriptio", "TEXT")
+# # #2ca02c
+# marker_color = {"POI": '#1f77b4', "Anomaly": '#ff7f0e', "Residential": '#ffe605', "Transit POI": '#d62728', "Business": '#9467bd'}
+# fields = ["Category", "fill", "Category", "Type", "Source", "Name", "House_Numb", "Prefix", "Street_Nam", "Street_Typ",
+#           "City", "title", "descriptio", "fill_opaci"]
+# with arcpy.da.UpdateCursor("location_polygons_mapbox", fields) as cursor:
+#     for row in cursor:
+#         row[fields.index("fill")] = marker_color[row[fields.index("Category")]]
+#         row[fields.index("fill_opaci")] = 0.3
+#         row[fields.index("title")] = ", ".join(i for i in [row[fields.index("Category")], row[fields.index("Type")],
+#                                                            row[fields.index("Source")]])
+#         row[fields.index("descriptio")] = row[fields.index("Name")] + " " + " ".join(i for i in [
+#             row[fields.index("House_Numb")], row[fields.index("Prefix")], row[fields.index("Street_Nam")],
+#             row[fields.index("Street_Typ")]]) + ", " + row[fields.index("City")]
+#         cursor.updateRow(row)

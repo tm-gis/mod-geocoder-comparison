@@ -1,13 +1,13 @@
-import pickle
+import py.pickle
 import sys
 import csv
 import os
 
 sys.path.append(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py")
 
-from compare_geocoders_using_test_suite import haversine, get_test_suite, get_geocoder_input
+from py.compare_geocoders_using_test_suite import haversine, get_test_suite, get_geocoder_input
 
-geocoder_responses = pickle.load(open(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\results\052317\responses.p", "rb"))
+geocoder_responses = py.pickle.load(open(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\results\052317\responses.p", "rb"))
 spreadsheet = "1b0zxcb_5w0M6ydStkVlL9ceIAs5P_gJhdQNLfhd0pyA"
 spreadsheet_range = 'Locations!A1:Q'
 

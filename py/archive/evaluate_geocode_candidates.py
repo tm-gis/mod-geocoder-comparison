@@ -1,7 +1,9 @@
 import csv
-import geocoder
-from py.geocoder_comp_2017 import getAddrAndLatLng
 import time
+
+import geocoder
+
+from py.archive.geocoder_comp_2017 import getAddrAndLatLng
 
 in_csv = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\geocoder_test_suite_042117.csv"
 out_csv = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\csv\geocoder_test_suite_data_with_coordinates_url_042117.csv"

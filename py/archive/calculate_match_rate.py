@@ -1,11 +1,13 @@
-from py.geocoder_comp_2017 import parse_mapzen_response, rlis_geocode, getAddrAndLatLng
-import py.pickle
-import geocoder
-import requests
-import time
-from ott.geocoder.geosolr import GeoSolr
-import random
 import datetime
+import random
+import time
+
+import geocoder
+import py.pickle
+import requests
+from ott.geocoder.geosolr import GeoSolr
+
+from py.archive.geocoder_comp_2017 import parse_mapzen_response, rlis_geocode, getAddrAndLatLng
 
 sample_addresses = py.pickle.load(open(r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\pickle\address_samples.p", "rb"))
 
