@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88b91d97-0dd7-4447-b3c9-cca6bd47822a" name="Default" comment="Updates to geocoder testing, added summary charts">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sql/join_results_to_responses.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py/archive/calculate_match_rate.py" afterPath="$PROJECT_DIR$/py/archive/calculate_match_rate.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py/archive/evaluate_geocode_candidates.py" afterPath="$PROJECT_DIR$/py/archive/evaluate_geocode_candidates.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py" afterPath="$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py/create_polygons_from_test_suite.py" afterPath="$PROJECT_DIR$/py/create_polygons_from_test_suite.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/foursquare_geocoder_comp.png" afterPath="$PROJECT_DIR$/py/archive/foursquare_geocoder_comp.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/foursquare_geocoder_comp_5-1-17.png" afterPath="$PROJECT_DIR$/py/archive/foursquare_geocoder_comp_5-1-17.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/foursquaregeocoder_test_results.csv" afterPath="$PROJECT_DIR$/py/archive/foursquaregeocoder_test_results.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/foursquaregeocoder_test_results_5-1-17.csv" afterPath="$PROJECT_DIR$/py/archive/foursquaregeocoder_test_results_5-1-17.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/geocoder_comp_2016.py" afterPath="$PROJECT_DIR$/py/archive/geocoder_comp_2016.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/geocoder_comp_2017.py" afterPath="$PROJECT_DIR$/py/archive/geocoder_comp_2017.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/geocoder_precision_comp.png" afterPath="$PROJECT_DIR$/py/archive/geocoder_precision_comp.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/google_sheets_api_functions.py" afterPath="$PROJECT_DIR$/py/archive/google_sheets_api_functions.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/parse_pickle_based_on_distance.py" afterPath="$PROJECT_DIR$/py/archive/parse_pickle_based_on_distance.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/py/summarize_geocoder_results.py" afterPath="$PROJECT_DIR$/py/archive/summarize_geocoder_results.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -66,8 +50,8 @@
           <file leaf-file-name="compare_geocoders_using_test_suite.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="408">
-                  <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+                <state relative-caret-position="558">
+                  <caret line="209" column="40" lean-forward="false" selection-start-line="209" selection-start-column="40" selection-end-line="209" selection-end-column="40" />
                   <folding>
                     <element signature="e#0#37#0" expanded="true" />
                   </folding>
@@ -139,10 +123,10 @@
         <option value="$PROJECT_DIR$/json/examples.json" />
         <option value="$PROJECT_DIR$/py/create_polygons_from_test_suite.py" />
         <option value="$PROJECT_DIR$/py/export_for_survey_team.py" />
-        <option value="$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py" />
         <option value="$PROJECT_DIR$/sql/sum_distances_by_geocoder.sql" />
         <option value="$PROJECT_DIR$/sql/join_results_to_responses.sql" />
         <option value="$PROJECT_DIR$/py/scratch.py" />
+        <option value="$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py" />
       </list>
     </option>
   </component>
@@ -517,7 +501,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6695558" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="-104" y="205" width="1920" height="223" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4127844" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30227518" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -843,8 +827,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+        <state relative-caret-position="558">
+          <caret line="209" column="40" lean-forward="false" selection-start-line="209" selection-start-column="40" selection-end-line="209" selection-end-column="40" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>

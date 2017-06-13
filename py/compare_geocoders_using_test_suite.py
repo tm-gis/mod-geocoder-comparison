@@ -207,7 +207,7 @@ def get_geocoder_result(address, geocoder_name, geocoder_dict):
            + "&boundary.rect.max_lat=46.059685"
 
     try:
-        if geocoder_name == "trimet":
+        if geocoder_name == "trimet_solr":
             (result_lat, result_long, address) = [trimet_geocoder.query(address, rows=1, start=0).results[0]['lat'],
                                                   trimet_geocoder.query(address, rows=1, start=0).results[0]['lon'],
                                                   (trimet_geocoder.query(address, rows=1, start=0).results[0]['address'] if
