@@ -173,7 +173,7 @@ def import_test_suite(in_polygons, db_name):
     # start up the server using pg_ctl
     def start_server():
         try:
-            call(["pg_ctl", "-D", "G:\PUBLIC\GIS\Geocoding\geocoder_comparison\db", "start"])
+            call(["pg_ctl", "-D", "X:\geocoder\db", "start"])
         except:
             pass
         return

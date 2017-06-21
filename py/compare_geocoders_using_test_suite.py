@@ -27,7 +27,7 @@ table = "public.location_polygons"
 
 def start_server():
     try:
-        subprocess.call(["pg_ctl", "-D", "G:\PUBLIC\GIS\Geocoding\geocoder_comparison\db", "start"])
+        subprocess.call(["pg_ctl", "-D", "X:\geocoder\db", "start"])
     except:
         pass
     return
@@ -340,7 +340,6 @@ def create_shapefile():
                host, user, password, "geocoder_test_suite", "public.geocoder_responses",
                "SELECT * FROM public.geocoder_responses")
     os.system(command)
-
     return
 
 if __name__ == '__main__':

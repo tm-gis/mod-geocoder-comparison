@@ -11,8 +11,8 @@
       <quote-values-containing-separator value="true" />
       <quote-all-values value="false" />
       <value-separator value="," />
-      <file-name value="responses_and_results.csv" />
-      <file-location value="G:\PUBLIC\GIS\Geocoding\geocoder_comparison\results\061317" />
+      <file-name value="results_and_responses.csv" />
+      <file-location value="G:\PUBLIC\GIS\Geocoding\geocoder_comparison\results\061417" />
       <scope value="GLOBAL" />
       <destination value="FILE" />
       <format value="CSV" />
@@ -40,6 +40,7 @@
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
     <mapping file-url="file://$PROJECT_DIR$/sql/join_results_to_responses.sql" connection-id="1812c7de-f078-4823-94ac-61847da7d252" current-schema="public" />
+    <mapping file-url="file://$PROJECT_DIR$/sql/temp.sql" connection-id="1812c7de-f078-4823-94ac-61847da7d252" current-schema="public" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
@@ -76,7 +77,7 @@
           <port value="5432" />
           <database value="geocoder_test_suite" />
           <os-authentication value="false" />
-          <empty-password value="false" />
+          <empty-password value="true" />
           <user value="postgres" />
           <password value="" />
         </database>
