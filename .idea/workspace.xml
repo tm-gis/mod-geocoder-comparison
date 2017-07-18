@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88b91d97-0dd7-4447-b3c9-cca6bd47822a" name="Default" comment="Updates to geocoder testing, added summary charts">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/py/archive/foursquare_geocoder_comp.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py" afterPath="$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py/create_polygons_from_test_suite.py" afterPath="$PROJECT_DIR$/py/create_polygons_from_test_suite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql/join_results_to_responses.sql" afterPath="$PROJECT_DIR$/sql/join_results_to_responses.sql" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,14 +19,14 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.30020848">
+    <splitter split-orientation="horizontal" split-proportion="0.19318971">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="create_polygons_from_test_suite.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="create_polygons_from_test_suite.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/py/create_polygons_from_test_suite.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="16" column="65" lean-forward="true" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
+                <state relative-caret-position="289">
+                  <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
                   <folding>
                     <element signature="e#0#9#0" expanded="true" />
                   </folding>
@@ -36,11 +34,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="export_for_survey_team.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="export_for_survey_team.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/py/export_for_survey_team.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="696">
-                  <caret line="48" column="48" lean-forward="false" selection-start-line="48" selection-start-column="48" selection-end-line="48" selection-end-column="48" />
+                <state relative-caret-position="510">
+                  <caret line="31" column="60" lean-forward="false" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
                   <folding>
                     <element signature="e#0#12#0" expanded="true" />
                   </folding>
@@ -55,11 +53,31 @@
           <file leaf-file-name="compare_geocoders_using_test_suite.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+                <state relative-caret-position="17">
+                  <caret line="302" column="33" lean-forward="false" selection-start-line="302" selection-start-column="33" selection-end-line="302" selection-end-column="33" />
                   <folding>
                     <element signature="e#0#37#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="theoretical_addresses.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/py/archive/theoretical_addresses.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="731">
+                  <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="scratch.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../../Planning/Deadhead_Analysis/python/scratch.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="51">
+                  <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="56" selection-end-column="18" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -76,6 +94,16 @@
           </file>
           <file leaf-file-name="join_results_to_responses.sql" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/sql/join_results_to_responses.sql">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="85">
+                  <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="join_results_to_responses_071817.sql" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sql/join_results_to_responses_071817.sql">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="0">
                   <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -106,6 +134,7 @@
       <find>'</find>
       <find>G:\PUBLIC\GIS\Geocoding\geocoder_comparison\db</find>
       <find>startupinfo</find>
+      <find>X:\geocoder\db</find>
     </findStrings>
     <replaceStrings>
       <replace>', '</replace>
@@ -113,6 +142,7 @@
       <replace>(result_lat, result_long, address)</replace>
       <replace>&quot;</replace>
       <replace>X:\geocoder\db</replace>
+      <replace>G:\PUBLIC\GIS\Geocoding\geocoder_comparison\db</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -142,10 +172,12 @@
         <option value="$PROJECT_DIR$/py/export_for_survey_team.py" />
         <option value="$PROJECT_DIR$/sql/sum_distances_by_geocoder.sql" />
         <option value="$PROJECT_DIR$/sql/temp.sql" />
-        <option value="$PROJECT_DIR$/sql/join_results_to_responses.sql" />
         <option value="$PROJECT_DIR$/py/scratch.py" />
-        <option value="$PROJECT_DIR$/py/create_polygons_from_test_suite.py" />
+        <option value="$PROJECT_DIR$/../../Planning/Deadhead_Analysis/python/scratch.py" />
         <option value="$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py" />
+        <option value="$PROJECT_DIR$/py/create_polygons_from_test_suite.py" />
+        <option value="$PROJECT_DIR$/sql/join_results_to_responses.sql" />
+        <option value="$PROJECT_DIR$/sql/join_results_to_responses_071817.sql" />
       </list>
     </option>
   </component>
@@ -170,6 +202,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -182,15 +216,27 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="geocoder_comparison" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="geocoder_comparison" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sql" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/results/071817" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="Python" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -204,11 +250,12 @@
     <option name="myIpythonEnabled" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\archive" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\PUBLIC\GIS\Geocoding\geocoder_comparison\sql" />
       <recent name="G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py\archive" />
       <recent name="G:\PUBLIC\GIS\Geocoding\geocoder_comparison\py" />
     </key>
   </component>
@@ -224,7 +271,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.setup4webapp">
+  <component name="RunManager" selected="Python.compare_geocoders_using_test_suite">
     <configuration default="false" name="create_polygons_from_test_suite" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -259,23 +306,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/py" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="geocoder_comparison" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/py/scratch.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="export_for_survey_team" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -306,6 +336,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="geocoder_comparison" />
       <option name="SCRIPT_NAME" value="$USER_HOME$/conda_setup/setup4webapp.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="scratch (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../Planning/Deadhead_Analysis/python" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="geocoder_comparison" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../Planning/Deadhead_Analysis/python/scratch.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -458,17 +505,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.create_polygons_from_test_suite" />
       <item index="1" class="java.lang.String" itemvalue="Python.compare_geocoders_using_test_suite" />
-      <item index="2" class="java.lang.String" itemvalue="Python.scratch" />
-      <item index="3" class="java.lang.String" itemvalue="Python.export_for_survey_team" />
-      <item index="4" class="java.lang.String" itemvalue="Python.setup4webapp" />
+      <item index="2" class="java.lang.String" itemvalue="Python.export_for_survey_team" />
+      <item index="3" class="java.lang.String" itemvalue="Python.setup4webapp" />
+      <item index="4" class="java.lang.String" itemvalue="Python.scratch (1)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.setup4webapp" />
-        <item index="1" class="java.lang.String" itemvalue="Python.compare_geocoders_using_test_suite" />
-        <item index="2" class="java.lang.String" itemvalue="Python.export_for_survey_team" />
-        <item index="3" class="java.lang.String" itemvalue="Python.create_polygons_from_test_suite" />
-        <item index="4" class="java.lang.String" itemvalue="Python.scratch" />
+        <item index="0" class="java.lang.String" itemvalue="Python.compare_geocoders_using_test_suite" />
+        <item index="1" class="java.lang.String" itemvalue="Python.create_polygons_from_test_suite" />
+        <item index="2" class="java.lang.String" itemvalue="Python.scratch (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Python.setup4webapp" />
+        <item index="4" class="java.lang.String" itemvalue="Python.export_for_survey_team" />
       </list>
     </recent_temporary>
   </component>
@@ -496,17 +543,26 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24183351" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1975764" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48212352" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1787649" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="-104" y="205" width="1920" height="223" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21451788" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="-104" y="205" width="1920" height="223" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -514,7 +570,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30227518" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23293608" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -531,26 +587,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/py/geocoder_precision_summary.py" />
-    <entry file="file://$PROJECT_DIR$/py/archive/summarize_geocoder_results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py/archive/summarize_geocoder_results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/py/archive/summarize_geocoder_results.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -688,27 +729,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../Business_Plan_Calculations/python/create_network_service_areas.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="75" column="42" lean-forward="false" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../Business_Plan_Calculations/python/madeline_scratch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="47" column="24" lean-forward="false" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py/archive/theoretical_addresses.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="62" column="28" lean-forward="false" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Business_Plan_Calculations/python/create_network_service_areas.py" />
+    <entry file="file://$PROJECT_DIR$/../../Business_Plan_Calculations/python/madeline_scratch.py" />
     <entry file="file://$PROJECT_DIR$/../../Capital_projects/Division_BRT_Stops/python/calculate_line4_distances.py" />
     <entry file="file://$PROJECT_DIR$/py/compare_geocoders_using_test_suite_MS.py" />
     <entry file="file://$PROJECT_DIR$/py/verify_test_suite.py" />
@@ -770,13 +792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/py/archive/summarize_geocoder_results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Miniconda2/Lib/subprocess.py" />
     <entry file="file://$USER_HOME$/conda_setup/setup4webapp.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -785,20 +800,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/py/create_polygons_from_test_suite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="65" lean-forward="true" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sql/temp.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2016.3/system/python_stubs/1506250101/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="2155" column="8" lean-forward="false" selection-start-line="2155" selection-start-column="8" selection-end-line="2155" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/archive/summarize_geocoder_results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/export_for_survey_team.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="31" column="60" lean-forward="false" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py/archive/theoretical_addresses.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Planning/Deadhead_Analysis/python/scratch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="56" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -811,7 +855,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/py/create_polygons_from_test_suite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sql/join_results_to_responses.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql/join_results_to_responses_071817.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -821,20 +883,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/py/compare_geocoders_using_test_suite.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        <state relative-caret-position="17">
+          <caret line="302" column="33" lean-forward="false" selection-start-line="302" selection-start-column="33" selection-end-line="302" selection-end-column="33" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py/export_for_survey_team.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="48" column="48" lean-forward="false" selection-start-line="48" selection-start-column="48" selection-end-line="48" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -18,16 +18,18 @@ results_dir = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\results"
 current = "%02d" % datetime.datetime.now().month + "%02d" % datetime.datetime.now().day + \
           str(datetime.datetime.now().year)[2:]
 database_name = "geocoder_test_suite"
-user = "postgres"
+user = "lint"
 password = ""
-host = "127.0.0.1"
+# host = "\\\\trinet\\trinet\\static\\gis\\geocoder\\db"
+db_address = r"G:\PUBLIC\GIS\Geocoding\geocoder_comparison\db"
+host = "localhost"
 port = "5432"
 table = "public.location_polygons"
 
 
 def start_server():
     try:
-        subprocess.call(["pg_ctl", "-D", "X:\geocoder\db", "start"])
+        subprocess.call(["pg_ctl", "-D", db_address, "restart"])
     except:
         pass
     return
@@ -246,6 +248,8 @@ def get_geocoder_result(address, geocoder_name, geocoder_dict):
         (result_lat, result_long, address) = [-1, -1, -1]
     except IndexError:
         (result_lat, result_long, address) = [-1, -1, -1]
+    except:
+        (result_lat, result_long, address) = [-1, -1, -1]
     return result_lat, result_long, address
 
 
@@ -279,6 +283,7 @@ def evaluate_test_suite():
     geocoder_responses = {}
 
     for t in test_suite_data_list:
+        print (test_suite_data_list.index(t))
         loc_id = int(t[test_suite_legend.index("location_i")])
 
         geocoder_input, input_type = get_geocoder_input(t, test_suite_legend)
@@ -343,7 +348,7 @@ def create_shapefile():
     return
 
 if __name__ == '__main__':
-    start_server()
+    # start_server()
     evaluate_test_suite()
     get_results()
     # create_shapefile()

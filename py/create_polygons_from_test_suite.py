@@ -173,7 +173,7 @@ def import_test_suite(in_polygons, db_name):
     # start up the server using pg_ctl
     def start_server():
         try:
-            call(["pg_ctl", "-D", "X:\geocoder\db", "start"])
+            call(["pg_ctl", "-D", "G:\PUBLIC\GIS\Geocoding\geocoder_comparison\db", "start"])
         except:
             pass
         return
@@ -186,7 +186,7 @@ def import_test_suite(in_polygons, db_name):
 if __name__ == '__main__':
     test_suite_legend, test_suite_data_list = get_test_suite(spreadsheet, spreadsheet_range)
     location_polygons = create_polygons()
-    location_polygons = os.path.join(shp_dir, "location_polygons.shp")
+    location_polygons = os.path.join(os.path.join(shp_dir, "Final_Polygons"), "final_location_polygons071217.shp")
     import_test_suite(location_polygons, "geocoder_test_suite")
 
 # ---------------only used for the mapbox shapefile to json--------------------------
